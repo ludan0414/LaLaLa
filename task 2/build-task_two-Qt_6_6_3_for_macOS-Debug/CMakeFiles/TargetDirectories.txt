@@ -1,0 +1,9 @@
+/Users/moyoumo/Desktop/QT/build-task_two-Qt_6_6_3_for_macOS-Debug/CMakeFiles/task_two.dir
+/Users/moyoumo/Desktop/QT/build-task_two-Qt_6_6_3_for_macOS-Debug/CMakeFiles/edit_cache.dir
+/Users/moyoumo/Desktop/QT/build-task_two-Qt_6_6_3_for_macOS-Debug/CMakeFiles/rebuild_cache.dir
+/Users/moyoumo/Desktop/QT/build-task_two-Qt_6_6_3_for_macOS-Debug/CMakeFiles/list_install_components.dir
+/Users/moyoumo/Desktop/QT/build-task_two-Qt_6_6_3_for_macOS-Debug/CMakeFiles/install.dir
+/Users/moyoumo/Desktop/QT/build-task_two-Qt_6_6_3_for_macOS-Debug/CMakeFiles/install/local.dir
+/Users/moyoumo/Desktop/QT/build-task_two-Qt_6_6_3_for_macOS-Debug/CMakeFiles/install/strip.dir
+/Users/moyoumo/Desktop/QT/build-task_two-Qt_6_6_3_for_macOS-Debug/CMakeFiles/task_two_autogen_timestamp_deps.dir
+/Users/moyoumo/Desktop/QT/build-task_two-Qt_6_6_3_for_macOS-Debug/CMakeFiles/task_two_autogen.dir

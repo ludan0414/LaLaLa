@@ -1,0 +1,19 @@
+{
+	"BUILD_DIR" : "/Users/moyoumo/Desktop/QT/build-task_two-Qt_6_6_3_for_macOS-Debug/task_two_autogen",
+	"CMAKE_BINARY_DIR" : "/Users/moyoumo/Desktop/QT/build-task_two-Qt_6_6_3_for_macOS-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/Users/moyoumo/Desktop/QT/build-task_two-Qt_6_6_3_for_macOS-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/Users/moyoumo/Desktop/QT/task_two",
+	"CMAKE_SOURCE_DIR" : "/Users/moyoumo/Desktop/QT/task_two",
+	"INCLUDE_DIR" : "/Users/moyoumo/Desktop/QT/build-task_two-Qt_6_6_3_for_macOS-Debug/task_two_autogen/include",
+	"INPUTS" : [ "/Users/moyoumo/Desktop/QT/task_two/\u533a\u57df2.png" ],
+	"LOCK_FILE" : "/Users/moyoumo/Desktop/QT/build-task_two-Qt_6_6_3_for_macOS-Debug/CMakeFiles/task_two_autogen.dir/AutoRcc_b_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--no-zstd", "-name", "b" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_b.cpp",
+	"RCC_EXECUTABLE" : "/Users/moyoumo/Qt/6.6.3/macos/./libexec/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/Users/moyoumo/Desktop/QT/build-task_two-Qt_6_6_3_for_macOS-Debug/CMakeFiles/task_two_autogen.dir/AutoRcc_b_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/Users/moyoumo/Desktop/QT/task_two/b.qrc",
+	"VERBOSITY" : 0
+}
