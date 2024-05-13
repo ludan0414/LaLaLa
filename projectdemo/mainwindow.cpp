@@ -25,7 +25,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    Widget *function1=new Widget;
+    Dialog1 *function1=new Dialog1;
     function1->show();
     //弹出功能1窗口
 }
@@ -33,7 +33,7 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    Dialog2 *function2=new Dialog2;
+    Widget *function2=new Widget;
     function2->show();
     //弹出功能2窗口
 }
