@@ -6,7 +6,7 @@ Dialog1::Dialog1(QWidget *parent)
     , ui(new Ui::Dialog1)
 {
     ui->setupUi(this);
-    this->resize(400,600);
+    this->resize(400, 600);
 }
 
 Dialog1::~Dialog1()
