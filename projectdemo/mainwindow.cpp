@@ -3,6 +3,7 @@
 #include "dialog1.h"
 #include "dialog2.h"
 #include "dialog3.h"
+#include"widget.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -24,7 +25,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    Dialog1 *function1=new Dialog1;
+    Widget *function1=new Widget;
     function1->show();
     //弹出功能1窗口
 }

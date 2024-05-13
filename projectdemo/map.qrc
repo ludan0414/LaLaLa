@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>全图with图例.png</file>
+    </qresource>
+</RCC>
