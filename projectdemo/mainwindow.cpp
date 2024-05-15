@@ -1,9 +1,8 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "dialog1.h"
-#include "dialog2.h"
-#include "dialog3.h"
 #include"widget.h"
+#include"page1.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -41,7 +40,9 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    Dialog3 *function3=new Dialog3;
+    //Dialog3 *function3=new Dialog3;
+    //function3->show();
+    page1 *function3=new page1;
     function3->show();
     //弹出功能3窗口
 }

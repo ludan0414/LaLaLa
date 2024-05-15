@@ -8,6 +8,8 @@ Dialog3::Dialog3(QWidget *parent)
     , ui(new Ui::Dialog3)
 {
     ui->setupUi(this);
+    ui->pushButton->setText("开始挑战");
+    /*
     QFile inFile("QandA.csv");
     QStringList lines;
     int num=0;
@@ -30,12 +32,13 @@ Dialog3::Dialog3(QWidget *parent)
     QString answerD=lines.at((n-1)*8+4);
     QString correctanswer=lines.at((n-1)*8+5);
     QString reason=lines.at((n-1)*8+6);
-    ui->textEdit->setText(question);
+    //ui->textEdit->setText(question);
     //ui->radioButton->resize();
     ui->radioButton_2->setText(answerA);
     ui->radioButton_3->setText(answerB);
     ui->radioButton_4->setText(answerC);
     ui->radioButton_5->setText(answerD);
+    */
 }
 
 Dialog3::~Dialog3()

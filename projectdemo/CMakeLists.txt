@@ -24,7 +24,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
 
-        dialog2.h dialog2.cpp dialog2.ui
+
         dialog3.h dialog3.cpp dialog3.ui
         dialog1.h dialog1.cpp dialog1.ui
         areaa.h areaa.cpp areaa.ui
@@ -37,6 +37,11 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         d.qrc
         map.qrc
         widget.h widget.cpp widget.ui
+        page2.h page2.cpp page2.ui
+        page1.h page1.cpp page1.ui
+        tip.h tip.cpp tip.ui
+
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET untitled1 APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
