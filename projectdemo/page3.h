@@ -1,22 +1,21 @@
-#ifndef PAGE2_H
-#define PAGE2_H
+#ifndef PAGE3_H
+#define PAGE3_H
 
 #include <QWidget>
 #include<QPushButton>
 #include<qradiobutton.h>
 #include<QTextEdit>
-#include<qstring.h>
 namespace Ui {
-class page2;
+class page3;
 }
 
-class page2 : public QWidget
+class page3 : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit page2(QWidget *parent = nullptr);
-    ~page2();
+    explicit page3(QWidget *parent = nullptr);
+    ~page3();
 private:
     QPushButton *nextpage=new QPushButton;
     QPushButton *over=new QPushButton;
@@ -42,13 +41,12 @@ private:
     int rightnum=0;
     int num=0;
     int number;
-
 private slots:
     void switchpage(bool flaga,bool flagb,bool flagc,bool flagd,QString s,QString r,int n_);
 signals:
     void pagechanged(bool flaga,bool flagb,bool flagc,bool flagd,QString s,QString r,int n_);
 private:
-    Ui::page2 *ui;
+    Ui::page3 *ui;
 };
 
-#endif // PAGE2_H
+#endif // PAGE3_H

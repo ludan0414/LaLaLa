@@ -40,6 +40,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         page2.h page2.cpp page2.ui
         page1.h page1.cpp page1.ui
         tip.h tip.cpp tip.ui
+        page3.h page3.cpp page3.ui
 
 
     )

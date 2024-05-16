@@ -3,47 +3,44 @@
 #include "dialog1.h"
 #include"widget.h"
 #include"page1.h"
+#include<QVBoxLayout>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->resize(400,600); //初始化主界面窗口大小，后续将实现按钮大小能够自动适应窗口大小
-    ui->pushButton->resize(100,50);
-    ui->pushButton->move(150,175);
-    ui->pushButton_2->resize(100,50);
-    ui->pushButton_2->move(150,275);
-    ui->pushButton_3->resize(100,50);
-    ui->pushButton_3->move(150,375);
-    //初始化三个按钮大小及位置
+    this->resize(400,600);
+    QWidget *widget=new QWidget(this);
+    this->setCentralWidget(widget);
+    QVBoxLayout *layout=new QVBoxLayout();
+    button1->setMinimumHeight(60);
+    button1->setMinimumWidth(170);
+    button2->setMinimumHeight(60);
+    button2->setMinimumWidth(170);
+    button3->setMinimumHeight(60);
+    button3->setMinimumWidth(170);
+    layout->addWidget(button1);
+    layout->addWidget(button2);
+    layout->addWidget(button3);
+    layout->setSpacing(60);
+    layout->setAlignment(Qt::AlignCenter);
+    connect(button1,&QPushButton::clicked,this,[](){
+        Dialog1 *function1=new Dialog1;
+        function1->show();
+    });
+    connect(button2,&QPushButton::clicked,this,[](){
+        Widget *function2=new Widget;
+        function2->show();
+    });
+    connect(button3,&QPushButton::clicked,this,[](){
+        page1 *function3=new page1;
+        function3->show();
+    });
+    centralWidget()->setLayout(layout);
 }
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
-void MainWindow::on_pushButton_clicked()
-{
-    Dialog1 *function1=new Dialog1;
-    function1->show();
-    //弹出功能1窗口
-}
-
-
-void MainWindow::on_pushButton_2_clicked()
-{
-    Widget *function2=new Widget;
-    function2->show();
-    //弹出功能2窗口
-}
-
-
-void MainWindow::on_pushButton_3_clicked()
-{
-    //Dialog3 *function3=new Dialog3;
-    //function3->show();
-    page1 *function3=new page1;
-    function3->show();
-    //弹出功能3窗口
-}
 

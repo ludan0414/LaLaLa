@@ -1,23 +1,22 @@
-#include "page2.h"
-#include "ui_page2.h"
-#include "tip.h"
+#include "page3.h"
+#include "ui_page3.h"
 #include<QTime>
 #include<QFile>
 #include<QDebug>
 #include<QVBoxLayout>
 #include<QHBoxLayout>
 #include<QDialog>
-page2::page2(QWidget *parent)
+page3::page3(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::page2)
+    , ui(new Ui::page3)
 {
     ui->setupUi(this);
     this->resize(500,350);
     rightnum=0;
-    number=2;
     num=0;
+    number=3;
     nextpage->setParent(this);
-    nextpage->setText("下一题");
+    nextpage->setText("跳过本题");
     over->setParent(this);
     over->setText("结束挑战");
     A->setParent(this);
@@ -38,7 +37,7 @@ page2::page2(QWidget *parent)
     }
     QTime time= QTime::currentTime();
     srand(time.msec()+time.second()*1000);
-    this->n= rand()%70;    //产生70以内的随机数
+    this->n= rand()%40;    //产生40以内的随机数
     question=lines.at((n-1)*8);
     answerA=lines.at((n-1)*8+1);
     answerB=lines.at((n-1)*8+2);
@@ -83,12 +82,8 @@ page2::page2(QWidget *parent)
             C->setEnabled(false);
             D->setEnabled(false);
             if(this->correctanswer=="A")
-            {
                 rightnum++;
-                this->q->setText("回答正确");
-            }
-            else
-                this->q->setText("回答错误，正确答案为"+this->correctanswer+"\n原因如下："+this->reason);
+            emit pagechanged(this->flaga,this->flagb,this->flagc,this->flagd,this->correctanswer,this->reason,this->n); // 传递参数给信号
         }
     });
     connect(B, &QRadioButton::clicked, this,[&]() {
@@ -100,12 +95,8 @@ page2::page2(QWidget *parent)
             C->setEnabled(false);
             D->setEnabled(false);
             if(this->correctanswer=="B")
-            {
                 rightnum++;
-                this->q->setText("回答正确");
-            }
-            else
-                this->q->setText("回答错误，正确答案为"+this->correctanswer+"\n原因如下："+this->reason);
+            emit pagechanged(this->flaga,this->flagb,this->flagc,this->flagd,this->correctanswer,this->reason,this->n); // 传递参数给信号
         }
     });
     connect(C, &QRadioButton::clicked, this,[&]() {
@@ -114,15 +105,11 @@ page2::page2(QWidget *parent)
         if(haschosed)
         {
             B->setEnabled(false);
+            C->setEnabled(false);
             A->setEnabled(false);
-            D->setEnabled(false);
             if(this->correctanswer=="C")
-            {
                 rightnum++;
-                this->q->setText("回答正确");
-            }
-            else
-                this->q->setText("回答错误，正确答案为"+this->correctanswer+"\n原因如下："+this->reason);
+            emit pagechanged(this->flaga,this->flagb,this->flagc,this->flagd,this->correctanswer,this->reason,this->n); // 传递参数给信号
         }
     });
     connect(D, &QRadioButton::clicked, this,[&]() {
@@ -134,67 +121,45 @@ page2::page2(QWidget *parent)
             C->setEnabled(false);
             A->setEnabled(false);
             if(this->correctanswer=="D")
-            {
                 rightnum++;
-                this->q->setText("回答正确");
-            }
-            else
-                this->q->setText("回答错误，正确答案为"+this->correctanswer+"\n原因如下："+this->reason);
+            emit pagechanged(this->flaga,this->flagb,this->flagc,this->flagd,this->correctanswer,this->reason,this->n); // 传递参数给信号
         }
     });
     connect(nextpage, &QPushButton::clicked, this, [&]() {
-        this->num++;
-        if(this->num<10)
-            emit pagechanged(this->flaga,this->flagb,this->flagc,this->flagd,this->correctanswer,this->reason,this->n); // 传递参数给信号
-        else
-        {
-            nextpage->setVisible(false);
-            over->setText("查看最终分数");
-        }
+        emit pagechanged(this->flaga,this->flagb,this->flagc,this->flagd,this->correctanswer,this->reason,this->n); // 传递参数给信号
     });
-    connect(this, &page2::pagechanged, this, &page2::switchpage);
+    connect(this, &page3::pagechanged, this, &page3::switchpage);
 
     connect(over,&QPushButton::clicked,this,[&](){
+        //再建立一个窗口，显示最终得分及用时，需要实现窗体之间的信息传递
     });
 }
 
-page2::~page2()
+page3::~page3()
 {
     delete ui;
 }
-
-
-void page2::switchpage(bool flaga,bool flagb,bool flagc,bool flagd,QString s,QString r,int n_)
+void page3::switchpage(bool flaga,bool flagb,bool flagc,bool flagd,QString s,QString r,int n_)
 {
-    if(!haschosed)
-    {
-        tip *tips=new tip;
-        tips->show();
-    }
-    else
-    {
-        if(flaga||flagb||flagc||flagd)
-        {
-            this->flaga=false;
-            this->flagb=false;
-            this->flagc=false;
-            this->flagd=false;
-            this->haschosed=false;
-            n++;
-            q->setText(lines.at((n-1)*8));
-            A->setText(lines.at((n-1)*8+1));
-            B->setText(lines.at((n-1)*8+2));
-            C->setText(lines.at((n-1)*8+3));
-            D->setText(lines.at((n-1)*8+4));
-            correctanswer=lines.at((n-1)*8+5);
-            reason=lines.at((n-1)*8+6);
-            QList<QRadioButton*> buttons = this->findChildren<QRadioButton*>();
-            foreach (QRadioButton* button, buttons) {
-                button->setEnabled(true);
-                button->setAutoExclusive(false);
-                button->setChecked(false);
-                button->setAutoExclusive(true);
-            }
-        }
+    this->flaga=false;
+    this->flagb=false;
+    this->flagc=false;
+    this->flagd=false;
+    this->haschosed=false;
+    n++;
+    q->setText(lines.at((n-1)*8));
+    A->setText(lines.at((n-1)*8+1));
+    B->setText(lines.at((n-1)*8+2));
+    C->setText(lines.at((n-1)*8+3));
+    D->setText(lines.at((n-1)*8+4));
+    correctanswer=lines.at((n-1)*8+5);
+    reason=lines.at((n-1)*8+6);
+    QList<QRadioButton*> buttons = this->findChildren<QRadioButton*>();
+    foreach (QRadioButton* button, buttons) {
+        button->setEnabled(true);
+        button->setAutoExclusive(false);
+        button->setChecked(false);
+        button->setAutoExclusive(true);
     }
 }
+

@@ -5,6 +5,7 @@
 #include "page1.h"
 #include "ui_page1.h"
 #include"page2.h"
+#include"page3.h"
 page1::page1(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::page1)
@@ -22,6 +23,10 @@ page1::page1(QWidget *parent)
     this->setLayout(layout);
     connect(button1, &QRadioButton::clicked, this,[]() {
         page2 *newpage=new page2;
+        newpage->show();
+    });
+    connect(button2, &QRadioButton::clicked, this,[]() {
+        page3 *newpage=new page3;
         newpage->show();
     });
 }
