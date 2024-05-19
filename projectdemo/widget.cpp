@@ -1,60 +1,99 @@
 #include "widget.h"
 #include "./ui_widget.h"
+#include "customdic.h"
+#include <QStandardItemModel>
+#include <QDebug>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
-
-    this->a = new AreaA;
-    connect(this->a,SIGNAL(back()),this,SLOT(comeBackToPrev()));
-    this->b = new AreaB;
-    connect(this->b,SIGNAL(back()),this,SLOT(comeBackToPrev2()));
-    this->c = new AreaC;
-    connect(this->c,SIGNAL(back()),this,SLOT(comeBackToPrev3()));
-    this->d = new AreaD;
-    connect(this->d,SIGNAL(back()),this,SLOT(comeBackToPrev4()));
+    ui->confirm->setEnabled(0);
+    ui->addgarbage->setEnabled(0);
 }
 
 Widget::~Widget()
 {
     delete ui;
 }
+QString city;
+int cityid;
+std::vector<std::string> findgarbage(std::string,int);
+void Widget::on_comboBox_editTextChanged(const QString &arg1)
+{
 
-void Widget::on_AreaA_pushButton_clicked()
+}
+
+
+void Widget::on_choosecity_editTextChanged(const QString &arg1)
 {
-    //this->close();
-    this->a->show();
+
 }
-void Widget::on_AreaB_pushButton_clicked()
+
+
+void Widget::on_entergarbage_textChanged()
 {
-    //this->close();
-    this->b->show();
+
 }
-void Widget::on_AreaC_pushButton_clicked()
+
+
+void Widget::on_choosecity_currentIndexChanged(int index)
 {
-    //this->close();
-    this->c->show();
+    city=ui->choosecity->currentText();
+    if (city=="北京"){
+        cityid=1;
+        ui->confirm->setEnabled(1);
+        ui->addgarbage->setEnabled(1);
+    }
+    else if (city=="上海"){
+        cityid=2;
+        ui->confirm->setEnabled(1);
+        ui->addgarbage->setEnabled(1);
+    }
+    else if (city=="广州"){
+        cityid=3;
+        ui->confirm->setEnabled(1);
+        ui->addgarbage->setEnabled(1);
+    }
+    else{
+        cityid=0;
+        ui->confirm->setEnabled(0);
+        ui->addgarbage->setEnabled(0);
+    }
 }
-void Widget::on_AreaD_pushButton_clicked()
+
+
+void Widget::on_confirm_clicked()
 {
-    //this->close();
-    this->d->show();
+    auto word=ui->entergarbage->toPlainText();
+    auto tobeshown=findgarbage(word.toStdString(),cityid);
+    QStandardItemModel *model = new QStandardItemModel();
+    int cnt=0;
+    for (auto &i:tobeshown){
+        QStandardItem *item = new QStandardItem(QString::fromStdString(i));
+        if(++cnt % 2 == 1)
+        {
+            QLinearGradient linearGrad(QPointF(0, 0), QPointF(200, 200));
+            linearGrad.setColorAt(0, Qt::cyan);
+            linearGrad.setColorAt(1, Qt::cyan);
+            QBrush brush(linearGrad);
+            item->setBackground(brush);
+        }
+        model->appendRow(item);
+    }
+    //总之这里要展示一下
+    if (tobeshown.empty()){
+        QStandardItem *item = new QStandardItem("啊哦，数据库里暂时没有收录这种垃圾！您可以尝试手动添加。");
+        model->appendRow(item);
+    }
+    ui->showgarbage->setModel(model);
 }
-void Widget::comeBackToPrev(){
-    this->a->hide();
-    //this->show();
+
+
+void Widget::on_addgarbage_clicked()
+{
+    customdic *Customdic = new customdic;
+    Customdic->show();
 }
-void Widget::comeBackToPrev2(){
-    this->b->hide();
-    //this->show();
-}
-void Widget::comeBackToPrev3(){
-    this->c->hide();
-    //this->show();
-}
-void Widget::comeBackToPrev4(){
-    this->d->hide();
-    //this->show();
-}
+

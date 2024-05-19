@@ -25,8 +25,6 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
 
 
-        dialog3.h dialog3.cpp dialog3.ui
-        dialog1.h dialog1.cpp dialog1.ui
         areaa.h areaa.cpp areaa.ui
         areab.h areab.cpp areab.ui
         areac.h areac.cpp areac.ui
@@ -36,12 +34,13 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         c.qrc
         d.qrc
         map.qrc
-        widget.h widget.cpp widget.ui
         page2.h page2.cpp page2.ui
         page1.h page1.cpp page1.ui
         tip.h tip.cpp tip.ui
         page3.h page3.cpp page3.ui
-
+        widget.h widget.cpp widget.ui
+        customdic.cpp customdic.h customdic.ui
+        widget_.h widget_.cpp widget_.ui
 
     )
 # Define target properties for Android with Qt 6 as:

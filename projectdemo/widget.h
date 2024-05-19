@@ -2,22 +2,12 @@
 #define WIDGET_H
 
 #include <QWidget>
-#include<QPushButton>
-#include "areaa.h"
-#include "areab.h"
-#include "areac.h"
-#include "aread.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class Widget;
 }
 QT_END_NAMESPACE
-
-class AreaA;
-class AreaB;
-class AreaC;
-class AreaD;
 
 class Widget : public QWidget
 {
@@ -27,24 +17,20 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 
-    AreaA *a = NULL;
-    AreaB *b = NULL;
-    AreaC *c = NULL;
-    AreaD *d = NULL;
-
 private slots:
-    void on_AreaA_pushButton_clicked();
-    void comeBackToPrev();
+    void on_comboBox_editTextChanged(const QString &arg1);
 
-    void on_AreaB_pushButton_clicked();
-    void comeBackToPrev2();
-    void on_AreaC_pushButton_clicked();
-    void comeBackToPrev3();
-    void on_AreaD_pushButton_clicked();
-    void comeBackToPrev4();
+    void on_choosecity_editTextChanged(const QString &arg1);
+
+    void on_entergarbage_textChanged();
+
+    void on_choosecity_currentIndexChanged(int index);
+
+    void on_confirm_clicked();
+
+    void on_addgarbage_clicked();
+
 private:
     Ui::Widget *ui;
 };
-
 #endif // WIDGET_H
-

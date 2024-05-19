@@ -1,8 +1,9 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-#include "dialog1.h"
-#include"widget.h"
 #include"page1.h"
+#include "widget.h"
+#include "widget_.h"
+#include "makedic.hpp"
 #include<QVBoxLayout>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -25,11 +26,13 @@ MainWindow::MainWindow(QWidget *parent)
     layout->setSpacing(60);
     layout->setAlignment(Qt::AlignCenter);
     connect(button1,&QPushButton::clicked,this,[](){
-        Dialog1 *function1=new Dialog1;
-        function1->show();
+        work();
+        readcustomdic();
+        Widget *w=new Widget;
+        w->show();
     });
     connect(button2,&QPushButton::clicked,this,[](){
-        Widget *function2=new Widget;
+        widget_ *function2=new widget_;
         function2->show();
     });
     connect(button3,&QPushButton::clicked,this,[](){
