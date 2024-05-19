@@ -1,5 +1,6 @@
 #include "widget.h"
 #include "./ui_widget.h"
+#include "customdic.h"
 #include <QStandardItemModel>
 #include <QDebug>
 
@@ -9,6 +10,7 @@ Widget::Widget(QWidget *parent)
 {
     ui->setupUi(this);
     ui->confirm->setEnabled(0);
+    ui->addgarbage->setEnabled(0);
 }
 
 Widget::~Widget()
@@ -42,18 +44,22 @@ void Widget::on_choosecity_currentIndexChanged(int index)
     if (city=="北京"){
         cityid=1;
         ui->confirm->setEnabled(1);
+        ui->addgarbage->setEnabled(1);
     }
     else if (city=="上海"){
         cityid=2;
         ui->confirm->setEnabled(1);
+        ui->addgarbage->setEnabled(1);
     }
     else if (city=="广州"){
         cityid=3;
         ui->confirm->setEnabled(1);
+        ui->addgarbage->setEnabled(1);
     }
     else{
         cityid=0;
         ui->confirm->setEnabled(0);
+        ui->addgarbage->setEnabled(0);
     }
 }
 
@@ -82,5 +88,12 @@ void Widget::on_confirm_clicked()
         model->appendRow(item);
     }
     ui->showgarbage->setModel(model);
+}
+
+
+void Widget::on_addgarbage_clicked()
+{
+    customdic *Customdic = new customdic;
+    Customdic->show();
 }
 

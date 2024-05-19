@@ -35,6 +35,7 @@ public:
     QLabel *text4;
     QPlainTextEdit *entername;
     QPushButton *new_2;
+    QPushButton *save;
 
     void setupUi(QWidget *customdic)
     {
@@ -49,7 +50,7 @@ public:
         change->setGeometry(QRect(520, 240, 75, 21));
         delete_2 = new QPushButton(customdic);
         delete_2->setObjectName("delete_2");
-        delete_2->setGeometry(QRect(510, 150, 75, 23));
+        delete_2->setGeometry(QRect(520, 140, 75, 23));
         enterid = new QPlainTextEdit(customdic);
         enterid->setObjectName("enterid");
         enterid->setGeometry(QRect(420, 140, 41, 31));
@@ -73,7 +74,10 @@ public:
         entername->setGeometry(QRect(420, 330, 91, 31));
         new_2 = new QPushButton(customdic);
         new_2->setObjectName("new_2");
-        new_2->setGeometry(QRect(530, 330, 75, 23));
+        new_2->setGeometry(QRect(520, 330, 75, 23));
+        save = new QPushButton(customdic);
+        save->setObjectName("save");
+        save->setGeometry(QRect(420, 390, 101, 61));
 
         retranslateUi(customdic);
 
@@ -90,6 +94,7 @@ public:
         text3->setText(QCoreApplication::translate("customdic", "\345\236\203\345\234\276\347\261\273\345\236\213", nullptr));
         text4->setText(QCoreApplication::translate("customdic", "\345\236\203\345\234\276\345\220\215\347\247\260", nullptr));
         new_2->setText(QCoreApplication::translate("customdic", "\346\226\260\345\273\272", nullptr));
+        save->setText(QCoreApplication::translate("customdic", "\344\277\235\345\255\230", nullptr));
     } // retranslateUi
 
 };

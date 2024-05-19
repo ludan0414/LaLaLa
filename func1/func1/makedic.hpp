@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <iostream>
 #include <map>
 #include <string>
 #include <vector>
@@ -7,7 +8,7 @@ using std::map,std::string,std::vector,std::multimap,std::make_pair,std::pair;
 map<string,int> NameToId;//把垃圾的名字转成id
 map<int,int> GarbageidToTypeid[4];//把垃圾的id转成城市里面垃圾种类的id
 map<int,string> TypeidToTypename[4];//把城市里面垃圾种类的id转换成字符串
-int NameCount;
+int NameCount,begincustom;
 //北京城市代码1，上海城市代码2，广州城市代码3
 /*
 北京可回收垃圾1，有害垃圾2，厨余垃圾3，其它垃圾4
@@ -73,6 +74,7 @@ void work(){
         memset(name,0,sizeof(name));
         ptr=sort=0;
     }
+    begincustom=NameCount+1;
     fclose(fp);
 }
 void test(){
@@ -177,10 +179,11 @@ vector<ret> listcustom(int cityid){
         ret tmp;
         tmp.a=i.second;
         tmp.b=i.first;
-        if (tmp.a&1)   tmp.c=TypeidToTypename[cityid][1];
-        if (tmp.a&2)   tmp.c=TypeidToTypename[cityid][2];
-        if (tmp.a&4)   tmp.c=TypeidToTypename[cityid][3];
-        if (tmp.a&8)   tmp.c=TypeidToTypename[cityid][4];
+        int id=GarbageidToTypeid[cityid][i.second];
+        if (id&1)   tmp.c=TypeidToTypename[cityid][1];
+        if (id&2)   tmp.c=TypeidToTypename[cityid][2];
+        if (id&4)   tmp.c=TypeidToTypename[cityid][3];
+        if (id&8)   tmp.c=TypeidToTypename[cityid][4];
         res.push_back(tmp);
     }
     return res;
@@ -255,47 +258,68 @@ void add(string name,int sort){
         NameToId[name]=++NameCount;
         thisid=NameCount;
     }
-    else    thisid=NameToId[name];
+    else    return;
     if (sort&(1<<0)){
-        GarbageidToTypeid[1].insert(make_pair(thisid,sort));
-        GarbageidToTypeid[2].insert(make_pair(thisid,sort));
-        GarbageidToTypeid[3].insert(make_pair(thisid,sort));
+        GarbageidToTypeid[1].insert(make_pair(thisid,sort+16));
+        GarbageidToTypeid[2].insert(make_pair(thisid,sort+16));
+        GarbageidToTypeid[3].insert(make_pair(thisid,sort+16));
     }
     if (sort&(1<<1)){
-        GarbageidToTypeid[1].insert(make_pair(thisid,sort));
-        GarbageidToTypeid[2].insert(make_pair(thisid,sort));
-        GarbageidToTypeid[3].insert(make_pair(thisid,sort));
+        GarbageidToTypeid[1].insert(make_pair(thisid,sort+16));
+        GarbageidToTypeid[2].insert(make_pair(thisid,sort+16));
+        GarbageidToTypeid[3].insert(make_pair(thisid,sort+16));
     }
     if (sort&(1<<2)){
-        GarbageidToTypeid[1].insert(make_pair(thisid,sort));
-        GarbageidToTypeid[2].insert(make_pair(thisid,sort));
-        GarbageidToTypeid[3].insert(make_pair(thisid,sort));
+        GarbageidToTypeid[1].insert(make_pair(thisid,sort+16));
+        GarbageidToTypeid[2].insert(make_pair(thisid,sort+16));
+        GarbageidToTypeid[3].insert(make_pair(thisid,sort+16));
     }
     if (sort&(1<<3)){
-        GarbageidToTypeid[1].insert(make_pair(thisid,sort));
-        GarbageidToTypeid[2].insert(make_pair(thisid,sort));
-        GarbageidToTypeid[3].insert(make_pair(thisid,sort));
+        GarbageidToTypeid[1].insert(make_pair(thisid,sort+16));
+        GarbageidToTypeid[2].insert(make_pair(thisid,sort+16));
+        GarbageidToTypeid[3].insert(make_pair(thisid,sort+16));
     }
+    std::cout<<name<<sort+16<<" "<<thisid<<true;
 }
 void changesort(int id,int sort){
     if (sort&(1<<0)){
-        GarbageidToTypeid[1][id]=sort;
-        GarbageidToTypeid[2][id]=sort;
-        GarbageidToTypeid[3][id]=sort;
+        GarbageidToTypeid[1][id]=sort+16;
+        GarbageidToTypeid[2][id]=sort+16;
+        GarbageidToTypeid[3][id]=sort+16;
     }
     if (sort&(1<<1)){
-        GarbageidToTypeid[1][id]=sort;
-        GarbageidToTypeid[2][id]=sort;
-        GarbageidToTypeid[3][id]=sort;
+        GarbageidToTypeid[1][id]=sort+16;
+        GarbageidToTypeid[2][id]=sort+16;
+        GarbageidToTypeid[3][id]=sort+16;
     }
     if (sort&(1<<2)){
-        GarbageidToTypeid[1][id]=sort;
-        GarbageidToTypeid[2][id]=sort;
-        GarbageidToTypeid[3][id]=sort;
+        GarbageidToTypeid[1][id]=sort+16;
+        GarbageidToTypeid[2][id]=sort+16;
+        GarbageidToTypeid[3][id]=sort+16;
     }
     if (sort&(1<<3)){
-        GarbageidToTypeid[1][id]=sort;
-        GarbageidToTypeid[2][id]=sort;
-        GarbageidToTypeid[3][id]=sort;
+        GarbageidToTypeid[1][id]=sort+16;
+        GarbageidToTypeid[2][id]=sort+16;
+        GarbageidToTypeid[3][id]=sort+16;
     }
 }
+
+void del(int id){
+    for (auto i:NameToId){
+        if (i.second==id){
+            for (auto j:GarbageidToTypeid[1]){
+                if (j.first==i.second){
+                    GarbageidToTypeid[1].erase(j.first);
+                    GarbageidToTypeid[2].erase(j.first);
+                    GarbageidToTypeid[3].erase(j.first);
+                    GarbageidToTypeid[4].erase(j.first);
+                    break;
+                }
+            }
+            NameToId.erase(i.first);
+            return;
+        }
+    }
+}
+
+

@@ -346,9 +346,9 @@ D:/Programming/func1/func1/widget.h
  mdp:D:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/time.h
  mdp:D:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/vadefs.h
  mdp:D:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h
+D:/Programming/func1/func1/main.cpp
 D:/Programming/func1/func1/customdic.cpp
  uic:ui_customdic.h
-D:/Programming/func1/func1/main.cpp
 D:/Programming/func1/func1/widget.cpp
  uic:./ui_widget.h
 D:/Programming/func1/func1/customdic.h

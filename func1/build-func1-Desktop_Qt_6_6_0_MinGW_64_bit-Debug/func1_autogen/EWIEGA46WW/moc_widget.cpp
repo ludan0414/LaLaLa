@@ -46,11 +46,12 @@ static constexpr auto qt_meta_stringdata_CLASSWidgetENDCLASS = QtMocHelpers::str
     "on_entergarbage_textChanged",
     "on_choosecity_currentIndexChanged",
     "index",
-    "on_confirm_clicked"
+    "on_confirm_clicked",
+    "on_addgarbage_clicked"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSWidgetENDCLASS_t {
-    uint offsetsAndSizes[18];
+    uint offsetsAndSizes[20];
     char stringdata0[7];
     char stringdata1[28];
     char stringdata2[1];
@@ -60,6 +61,7 @@ struct qt_meta_stringdata_CLASSWidgetENDCLASS_t {
     char stringdata6[34];
     char stringdata7[6];
     char stringdata8[19];
+    char stringdata9[22];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSWidgetENDCLASS_t::offsetsAndSizes) + ofs), len 
@@ -73,7 +75,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSWidgetENDCLASS_t qt_meta_string
         QT_MOC_LITERAL(71, 27),  // "on_entergarbage_textChanged"
         QT_MOC_LITERAL(99, 33),  // "on_choosecity_currentIndexCha..."
         QT_MOC_LITERAL(133, 5),  // "index"
-        QT_MOC_LITERAL(139, 18)   // "on_confirm_clicked"
+        QT_MOC_LITERAL(139, 18),  // "on_confirm_clicked"
+        QT_MOC_LITERAL(158, 21)   // "on_addgarbage_clicked"
     },
     "Widget",
     "on_comboBox_editTextChanged",
@@ -83,7 +86,8 @@ Q_CONSTINIT static const qt_meta_stringdata_CLASSWidgetENDCLASS_t qt_meta_string
     "on_entergarbage_textChanged",
     "on_choosecity_currentIndexChanged",
     "index",
-    "on_confirm_clicked"
+    "on_confirm_clicked",
+    "on_addgarbage_clicked"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -95,7 +99,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSWidgetENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -103,17 +107,19 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSWidgetENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   44,    2, 0x08,    1 /* Private */,
-       4,    1,   47,    2, 0x08,    3 /* Private */,
-       5,    0,   50,    2, 0x08,    5 /* Private */,
-       6,    1,   51,    2, 0x08,    6 /* Private */,
-       8,    0,   54,    2, 0x08,    8 /* Private */,
+       1,    1,   50,    2, 0x08,    1 /* Private */,
+       4,    1,   53,    2, 0x08,    3 /* Private */,
+       5,    0,   56,    2, 0x08,    5 /* Private */,
+       6,    1,   57,    2, 0x08,    6 /* Private */,
+       8,    0,   60,    2, 0x08,    8 /* Private */,
+       9,    0,   61,    2, 0x08,    9 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    7,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -140,6 +146,8 @@ Q_CONSTINIT const QMetaObject Widget::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'on_confirm_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'on_addgarbage_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -156,6 +164,7 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 2: _t->on_entergarbage_textChanged(); break;
         case 3: _t->on_choosecity_currentIndexChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 4: _t->on_confirm_clicked(); break;
+        case 5: _t->on_addgarbage_clicked(); break;
         default: ;
         }
     }
@@ -180,13 +189,13 @@ int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 6;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 6)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 5;
+        _id -= 6;
     }
     return _id;
 }

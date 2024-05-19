@@ -42,8 +42,8 @@
   <widget class="QPushButton" name="delete_2">
    <property name="geometry">
     <rect>
-     <x>510</x>
-     <y>150</y>
+     <x>520</x>
+     <y>140</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -134,7 +134,7 @@
   <widget class="QPushButton" name="new_2">
    <property name="geometry">
     <rect>
-     <x>530</x>
+     <x>520</x>
      <y>330</y>
      <width>75</width>
      <height>23</height>
@@ -142,6 +142,19 @@
    </property>
    <property name="text">
     <string>新建</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="save">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>390</y>
+     <width>101</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>保存</string>
    </property>
   </widget>
  </widget>

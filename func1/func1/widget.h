@@ -28,6 +28,8 @@ private slots:
 
     void on_confirm_clicked();
 
+    void on_addgarbage_clicked();
+
 private:
     Ui::Widget *ui;
 };
