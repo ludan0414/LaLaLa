@@ -6,12 +6,21 @@
 #include<QVBoxLayout>
 #include<QHBoxLayout>
 #include<QDialog>
+#include<QTime>
+#include<QTimer>
 page3::page3(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::page3)
 {
     ui->setupUi(this);
     this->resize(500,350);
+    timer = new QTimer(this);
+    TimeRecord = new QTime(0, 1, 0); // 初始化 QTime 为 00:01:00
+    Time = new QLCDNumber(this);
+    Time->setDigitCount(8);
+     Time->display(TimeRecord->toString("mm:ss"));
+    connect(timer, &QTimer::timeout, this, &page3::updatetime);
+    timer->start(1000);
     rightnum=0;
     num=0;
     number=3;
@@ -63,6 +72,7 @@ page3::page3(QWidget *parent)
     layout1->addWidget(B);
     layout1->addWidget(C);
     layout1->addWidget(D);
+    layout1->addWidget(Time);
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addLayout(layout1);
     layout->addLayout(layout2);
@@ -131,7 +141,7 @@ page3::page3(QWidget *parent)
     connect(this, &page3::pagechanged, this, &page3::switchpage);
 
     connect(over,&QPushButton::clicked,this,[&](){
-        //再建立一个窗口，显示最终得分及用时，需要实现窗体之间的信息传递
+        //再建立一个窗口，需要实现窗体之间的信息传递
     });
 }
 
@@ -163,3 +173,12 @@ void page3::switchpage(bool flaga,bool flagb,bool flagc,bool flagd,QString s,QSt
     }
 }
 
+void page3::updatetime()
+{
+    if (TimeRecord->secsTo(QTime(0, 0)) == 0) {
+        timer->stop(); // 停止计时器
+    } else {
+        *TimeRecord = TimeRecord->addSecs(-1);
+        Time->display(TimeRecord->toString("mm:ss"));
+    }
+}

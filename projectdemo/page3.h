@@ -5,6 +5,9 @@
 #include<QPushButton>
 #include<qradiobutton.h>
 #include<QTextEdit>
+#include<QTime>
+#include<QTimer>
+#include<QLCDNumber>
 namespace Ui {
 class page3;
 }
@@ -41,6 +44,11 @@ private:
     int rightnum=0;
     int num=0;
     int number;
+    QTimer *timer;
+    QTime *TimeRecord;
+    QLCDNumber *Time;
+    void updatetime();
+
 private slots:
     void switchpage(bool flaga,bool flagb,bool flagc,bool flagd,QString s,QString r,int n_);
 signals:
