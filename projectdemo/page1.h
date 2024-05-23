@@ -14,8 +14,9 @@ class page1 : public QWidget
 
 public:
     explicit page1(QWidget *parent = nullptr);
-    QPushButton *button1=new QPushButton;
-    QPushButton *button2=new QPushButton;
+    QPushButton *button1=new QPushButton(this);
+    QPushButton *button2=new QPushButton(this);
+    QPushButton *button3=new QPushButton(this);
     ~page1();
 
 
@@ -23,5 +24,6 @@ private:
     Ui::page1 *ui;
 
 };
+extern int whichpage;
 
 #endif // PAGE1_H

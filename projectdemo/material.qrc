@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/material1">
+        <file>background1.jpg</file>
+    </qresource>
+    <qresource prefix="/material2">
+        <file>background_function3.jpg</file>
+    </qresource>
+    <qresource prefix="/material3">
+        <file>白金.png</file>
+        <file>铂金.png</file>
+        <file>冠军.png</file>
+        <file>红宝石.png</file>
+        <file>黄金.png</file>
+        <file>黄铜章.png</file>
+        <file>绿宝石.png</file>
+        <file>银章.png</file>
+        <file>紫宝石.png</file>
+        <file>钻石.png</file>
+    </qresource>
+</RCC>

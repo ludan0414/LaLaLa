@@ -53,6 +53,7 @@ private slots:
     void switchpage(bool flaga,bool flagb,bool flagc,bool flagd,QString s,QString r,int n_);
 signals:
     void pagechanged(bool flaga,bool flagb,bool flagc,bool flagd,QString s,QString r,int n_);
+    void timeup();
 private:
     Ui::page3 *ui;
 };

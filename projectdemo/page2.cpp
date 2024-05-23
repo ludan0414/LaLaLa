@@ -1,6 +1,7 @@
 #include "page2.h"
 #include "ui_page2.h"
 #include "tip.h"
+#include"tip_.h"
 #include<QTime>
 #include<QFile>
 #include<QDebug>
@@ -47,6 +48,7 @@ page2::page2(QWidget *parent)
     correctanswer=lines.at((n-1)*8+5);
     reason=lines.at((n-1)*8+6);
     q->setText(question);
+    q->setReadOnly(true);
     A->setText(answerA);
     B->setText(answerB);
     C->setText(answerC);
@@ -155,6 +157,9 @@ page2::page2(QWidget *parent)
     connect(this, &page2::pagechanged, this, &page2::switchpage);
 
     connect(over,&QPushButton::clicked,this,[&](){
+        qDebug()<<rightnum;
+        tip_ *tips=new tip_(rightnum);
+        tips->show();
     });
 }
 

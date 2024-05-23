@@ -8,6 +8,8 @@
 #include<QDialog>
 #include<QTime>
 #include<QTimer>
+#include<Qlabel>
+#include "tip_.h"
 page3::page3(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::page3)
@@ -15,7 +17,7 @@ page3::page3(QWidget *parent)
     ui->setupUi(this);
     this->resize(500,350);
     timer = new QTimer(this);
-    TimeRecord = new QTime(0, 1, 0); // 初始化 QTime 为 00:01:00
+    TimeRecord = new QTime(0, 0, 5); // 初始化 QTime 为 00:01:00
     Time = new QLCDNumber(this);
     Time->setDigitCount(8);
      Time->display(TimeRecord->toString("mm:ss"));
@@ -55,6 +57,7 @@ page3::page3(QWidget *parent)
     correctanswer=lines.at((n-1)*8+5);
     reason=lines.at((n-1)*8+6);
     q->setText(question);
+    q->setReadOnly(true);
     A->setText(answerA);
     B->setText(answerB);
     C->setText(answerC);
@@ -141,7 +144,12 @@ page3::page3(QWidget *parent)
     connect(this, &page3::pagechanged, this, &page3::switchpage);
 
     connect(over,&QPushButton::clicked,this,[&](){
-        //再建立一个窗口，需要实现窗体之间的信息传递
+        tip_ *tips=new tip_(rightnum);
+        tips->show();
+    });
+    connect(this, &page3::timeup, this, [&]() {
+        tip_ *tips=new tip_(rightnum);
+        tips->show();
     });
 }
 
@@ -177,6 +185,9 @@ void page3::updatetime()
 {
     if (TimeRecord->secsTo(QTime(0, 0)) == 0) {
         timer->stop(); // 停止计时器
+        over->setVisible(false);
+        nextpage->setVisible(false);
+        emit timeup();
     } else {
         *TimeRecord = TimeRecord->addSecs(-1);
         Time->display(TimeRecord->toString("mm:ss"));
