@@ -1,7 +1,7 @@
 当前三个功能已经合并
-需要注意的是在运行时应该将QandA.csv放入bulid下的debug文件夹中
-并修改makedic中garbage.csv的路径
- 且在github中上传qt项目时不需要上传cmakelists.tst.user
- 只需上传cmakelist.txt bulid文件夹一般也不需要上传
+且在github中上传qt项目时不需要上传cmakelists.tst.user
+只需上传cmakelist.txt bulid文件夹一般也不需要上传
  
-注意如果是本地新建项目并进行复制的话，应该将cmakelists里的untitled1改为你的项目名称
+注意如果是本地新建项目并进行复制的话，应该将cmakelists里的untitled1改为你的项目名称(我已将其改为projectdemo)
+功能一使用时应该修改makedic中garbage.csv的路径
+功能三使用时将achievement.csv与QandA.csv放入bulid中的debug文件夹中
