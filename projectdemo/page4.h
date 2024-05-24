@@ -14,6 +14,7 @@ class page4 : public QWidget
 public:
     explicit page4(QWidget *parent = nullptr);
     ~page4();
+    QStringList list;
     QListWidget *listwidget = new QListWidget(this);
 
 private:

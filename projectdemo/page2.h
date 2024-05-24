@@ -39,9 +39,12 @@ private:
     QString answerC;
     QString answerB;
     QString answerD;
+    QStringList data;
     int rightnum=0;
     int num=0;
     int number;
+    int myanswer[11];
+    void writecsv(const QString& filename,  QStringList data);
 
 private slots:
     void switchpage(bool flaga,bool flagb,bool flagc,bool flagd,QString s,QString r,int n_);

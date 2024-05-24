@@ -28,7 +28,7 @@ void work(){
     TypeidToTypename[3][3]="餐厨垃圾";
     TypeidToTypename[3][2]="有害垃圾";
     TypeidToTypename[3][4]="其它垃圾";
-    FILE *fp=fopen("D:\\qt\\LaLaLa\\projectdemo\\garbage.csv","r");
+    FILE *fp=fopen("D:\\qt-try\\untitled1\\garbage.csv","r");
     char line[2000];
     char name[200];
     memset(name,0,sizeof(name));

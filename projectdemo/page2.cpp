@@ -17,6 +17,8 @@ page2::page2(QWidget *parent)
     rightnum=0;
     number=2;
     num=0;
+    for(int i=0;i<10;i++)
+        myanswer[i]=0;
     nextpage->setParent(this);
     nextpage->setText("下一题");
     over->setParent(this);
@@ -76,6 +78,7 @@ page2::page2(QWidget *parent)
     this->flagc=false;
     this->flagd=false;
     this->haschosed=false;
+    data<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n";
     connect(A, &QRadioButton::clicked, this,[&]() {
         this->flaga=!this->flaga;
         haschosed=true;
@@ -88,6 +91,7 @@ page2::page2(QWidget *parent)
             {
                 rightnum++;
                 this->q->setText("回答正确");
+                myanswer[num]=1;
             }
             else
                 this->q->setText("回答错误，正确答案为"+this->correctanswer+"\n原因如下："+this->reason);
@@ -105,6 +109,7 @@ page2::page2(QWidget *parent)
             {
                 rightnum++;
                 this->q->setText("回答正确");
+                myanswer[num]=1;
             }
             else
                 this->q->setText("回答错误，正确答案为"+this->correctanswer+"\n原因如下："+this->reason);
@@ -122,6 +127,7 @@ page2::page2(QWidget *parent)
             {
                 rightnum++;
                 this->q->setText("回答正确");
+                myanswer[num]=1;
             }
             else
                 this->q->setText("回答错误，正确答案为"+this->correctanswer+"\n原因如下："+this->reason);
@@ -139,6 +145,7 @@ page2::page2(QWidget *parent)
             {
                 rightnum++;
                 this->q->setText("回答正确");
+                myanswer[num]=1;
             }
             else
                 this->q->setText("回答错误，正确答案为"+this->correctanswer+"\n原因如下："+this->reason);
@@ -157,7 +164,40 @@ page2::page2(QWidget *parent)
     connect(this, &page2::pagechanged, this, &page2::switchpage);
 
     connect(over,&QPushButton::clicked,this,[&](){
-        qDebug()<<rightnum;
+        this->close();
+        if(rightnum>=3)
+            data[0]="TRUE\n";
+        else if(rightnum>=5)
+        {
+            data[0]="TRUE\n";
+            data[1]="TRUE\n";
+        }
+        else if(rightnum==10)
+        {
+            data[0]="TRUE\n";
+            data[1]="TRUE\n";
+            data[2]="TRUE\n";
+        }
+        else if(rightnum==0)
+            data[8]="TRUE\n";
+        for(int i=0;i<=7;i++)
+        {
+            if(myanswer[i]==1&&myanswer[i+1]==1&&myanswer[i+2]==1)
+            {
+                data[6]="TRUE\n";
+                break;
+            }
+        }
+        for(int i=0;i<=5;i++)
+        {
+            if(myanswer[i]==1&&myanswer[i+1]==1&&myanswer[i+2]==1&&myanswer[i+3]==1&&myanswer[i+4]==1)
+            {
+                data[6]="TRUE\n";
+                data[7]="TRUE\n";
+                break;
+            }
+        }
+        writecsv("achievement.csv",data);
         tip_ *tips=new tip_(rightnum);
         tips->show();
     });
@@ -168,7 +208,18 @@ page2::~page2()
     delete ui;
 }
 
-
+void page2::writecsv(const QString& filename,  QStringList data) {
+    QFile file(filename);
+    //以只写方式打开，完全重写数据
+    if (file.open(QIODevice::WriteOnly))
+    {
+        for (int i = 0; i < data.size(); i++)
+        {
+            file.write(data[i].toStdString().c_str());/*写入每一行数据到文件*/
+        }
+        file.close();
+    }
+}
 void page2::switchpage(bool flaga,bool flagb,bool flagc,bool flagd,QString s,QString r,int n_)
 {
     if(!haschosed)

@@ -8,22 +8,28 @@
 #include<QDialog>
 #include<QTime>
 #include<QTimer>
+#include<QRandomGenerator>
 #include<Qlabel>
 #include "tip_.h"
+bool page3::visible = true;
 page3::page3(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::page3)
 {
     ui->setupUi(this);
     this->resize(500,350);
+    data<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n";
     timer = new QTimer(this);
-    TimeRecord = new QTime(0, 0, 5); // 初始化 QTime 为 00:01:00
+    TimeRecord = new QTime(0, 1, 0); // 初始化 QTime 为 00:01:00
     Time = new QLCDNumber(this);
     Time->setDigitCount(8);
-     Time->display(TimeRecord->toString("mm:ss"));
+    Time->setStyleSheet("QLCDNumber { background-color: black; }");
+    Time->setStyleSheet("background:black;color:#00ccff;");
+    Time->display(TimeRecord->toString("mm:ss"));
     connect(timer, &QTimer::timeout, this, &page3::updatetime);
     timer->start(1000);
     rightnum=0;
+    wrongnum=0;
     num=0;
     number=3;
     nextpage->setParent(this);
@@ -49,6 +55,7 @@ page3::page3(QWidget *parent)
     QTime time= QTime::currentTime();
     srand(time.msec()+time.second()*1000);
     this->n= rand()%40;    //产生40以内的随机数
+    qDebug()<<n;
     question=lines.at((n-1)*8);
     answerA=lines.at((n-1)*8+1);
     answerB=lines.at((n-1)*8+2);
@@ -96,6 +103,8 @@ page3::page3(QWidget *parent)
             D->setEnabled(false);
             if(this->correctanswer=="A")
                 rightnum++;
+            else
+                wrongnum++;
             emit pagechanged(this->flaga,this->flagb,this->flagc,this->flagd,this->correctanswer,this->reason,this->n); // 传递参数给信号
         }
     });
@@ -109,6 +118,8 @@ page3::page3(QWidget *parent)
             D->setEnabled(false);
             if(this->correctanswer=="B")
                 rightnum++;
+            else
+                wrongnum++;
             emit pagechanged(this->flaga,this->flagb,this->flagc,this->flagd,this->correctanswer,this->reason,this->n); // 传递参数给信号
         }
     });
@@ -122,6 +133,8 @@ page3::page3(QWidget *parent)
             A->setEnabled(false);
             if(this->correctanswer=="C")
                 rightnum++;
+            else
+                wrongnum++;
             emit pagechanged(this->flaga,this->flagb,this->flagc,this->flagd,this->correctanswer,this->reason,this->n); // 传递参数给信号
         }
     });
@@ -135,6 +148,8 @@ page3::page3(QWidget *parent)
             A->setEnabled(false);
             if(this->correctanswer=="D")
                 rightnum++;
+            else
+                wrongnum++;
             emit pagechanged(this->flaga,this->flagb,this->flagc,this->flagd,this->correctanswer,this->reason,this->n); // 传递参数给信号
         }
     });
@@ -144,13 +159,49 @@ page3::page3(QWidget *parent)
     connect(this, &page3::pagechanged, this, &page3::switchpage);
 
     connect(over,&QPushButton::clicked,this,[&](){
+        this->close();
+        if(rightnum>=10)
+            data[3]="TRUE\n";
+        else if(rightnum>=20)
+        {
+            data[3]="TRUE\n";
+            data[4]="TRUE\n";
+        }
+        else if(wrongnum==0&&rightnum>=30)
+        {
+            data[3]="TRUE\n";
+            data[4]="TRUE\n";
+            data[5]="TRUE\n";
+        }
+        else if(rightnum==0)
+            data[8]="TRUE\n";
+        writecsv("achievement.csv",data);
         tip_ *tips=new tip_(rightnum);
         tips->show();
     });
     connect(this, &page3::timeup, this, [&]() {
+        this->close();
+        if(rightnum>=10)
+            data[3]="TRUE\n";
+        else if(rightnum>=20)
+        {
+            data[3]="TRUE\n";
+            data[4]="TRUE\n";
+        }
+        else if(wrongnum==0&&rightnum>=30)
+        {
+            data[3]="TRUE\n";
+            data[4]="TRUE\n";
+            data[5]="TRUE\n";
+        }
+        else if(rightnum==0)
+            data[8]="TRUE\n";
+        writecsv("achievement.csv",data);
         tip_ *tips=new tip_(rightnum);
         tips->show();
     });
+    connect(&flash, &QTimer::timeout, this, &page3::handleflash);
+    connect(this, &page3::flashtime, this, &page3::handleflash);
 }
 
 page3::~page3()
@@ -183,13 +234,51 @@ void page3::switchpage(bool flaga,bool flagb,bool flagc,bool flagd,QString s,QSt
 
 void page3::updatetime()
 {
-    if (TimeRecord->secsTo(QTime(0, 0)) == 0) {
-        timer->stop(); // 停止计时器
+    int secondsLeft = QTime(0, 0).secsTo(*TimeRecord);
+    if (secondsLeft== 0) {
+        //qDebug()<<"haha";
+        timer->stop();// 停止计时器
+        flash.stop();
+        this->close();
         over->setVisible(false);
         nextpage->setVisible(false);
+        Time->setVisible(true);
         emit timeup();
-    } else {
+    }
+    else {
+        if(secondsLeft == 5)
+        {
+            //qDebug()<<"haha";
+            emit flashtime();
+        }
         *TimeRecord = TimeRecord->addSecs(-1);
         Time->display(TimeRecord->toString("mm:ss"));
+    }
+}
+void page3::handleflash()
+{
+    if (!flash.isActive()) {
+        flash.start(100); // 启动闪烁定时器
+    }
+    //qDebug() << visible;
+    QPalette palette = Time->palette();
+    if (visible) {
+        Time->setStyleSheet("background:red;");
+    } else {
+        Time->setStyleSheet("background:black;");
+    }
+    Time->setPalette(palette);
+    visible = !visible; // 切换可见性
+}
+void page3::writecsv(const QString& filename,  QStringList data) {
+    QFile file(filename);
+    //以只写方式打开，完全重写数据
+    if (file.open(QIODevice::WriteOnly))
+    {
+        for (int i = 0; i < data.size(); i++)
+        {
+            file.write(data[i].toStdString().c_str());/*写入每一行数据到文件*/
+        }
+        file.close();
     }
 }

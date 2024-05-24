@@ -42,18 +42,25 @@ private:
     QString answerB;
     QString answerD;
     int rightnum=0;
+    int wrongnum=0;
     int num=0;
     int number;
     QTimer *timer;
     QTime *TimeRecord;
     QLCDNumber *Time;
+    QTimer flash;
+    QStringList data;
     void updatetime();
+    static bool visible;
+    void writecsv(const QString& filename,  QStringList data);
 
 private slots:
     void switchpage(bool flaga,bool flagb,bool flagc,bool flagd,QString s,QString r,int n_);
+    void handleflash();
 signals:
     void pagechanged(bool flaga,bool flagb,bool flagc,bool flagd,QString s,QString r,int n_);
     void timeup();
+    void flashtime();
 private:
     Ui::page3 *ui;
 };
