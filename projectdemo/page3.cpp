@@ -18,7 +18,8 @@ page3::page3(QWidget *parent)
 {
     ui->setupUi(this);
     this->resize(500,350);
-    data<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n";
+    readcsv("achievement.csv");
+    //data<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n";
     timer = new QTimer(this);
     TimeRecord = new QTime(0, 1, 0); // 初始化 QTime 为 00:01:00
     Time = new QLCDNumber(this);
@@ -54,8 +55,10 @@ page3::page3(QWidget *parent)
     }
     QTime time= QTime::currentTime();
     srand(time.msec()+time.second()*1000);
-    this->n= rand()%40;    //产生40以内的随机数
-    qDebug()<<n;
+    this->n= rand()%40;//产生40以内的随机数
+    if(n==0)
+        n++;
+    //qDebug()<<n;
     question=lines.at((n-1)*8);
     answerA=lines.at((n-1)*8+1);
     answerB=lines.at((n-1)*8+2);
@@ -162,18 +165,11 @@ page3::page3(QWidget *parent)
         this->close();
         if(rightnum>=10)
             data[3]="TRUE\n";
-        else if(rightnum>=20)
-        {
-            data[3]="TRUE\n";
+        if(rightnum>=20)
             data[4]="TRUE\n";
-        }
-        else if(wrongnum==0&&rightnum>=30)
-        {
-            data[3]="TRUE\n";
-            data[4]="TRUE\n";
+        if(wrongnum==0&&rightnum>=30)
             data[5]="TRUE\n";
-        }
-        else if(rightnum==0)
+        if(rightnum==0)
             data[8]="TRUE\n";
         writecsv("achievement.csv",data);
         tip_ *tips=new tip_(rightnum);
@@ -183,18 +179,11 @@ page3::page3(QWidget *parent)
         this->close();
         if(rightnum>=10)
             data[3]="TRUE\n";
-        else if(rightnum>=20)
-        {
-            data[3]="TRUE\n";
+        if(rightnum>=20)
             data[4]="TRUE\n";
-        }
-        else if(wrongnum==0&&rightnum>=30)
-        {
-            data[3]="TRUE\n";
-            data[4]="TRUE\n";
+        if(wrongnum==0&&rightnum>=30)
             data[5]="TRUE\n";
-        }
-        else if(rightnum==0)
+        if(rightnum==0)
             data[8]="TRUE\n";
         writecsv("achievement.csv",data);
         tip_ *tips=new tip_(rightnum);
@@ -278,6 +267,22 @@ void page3::writecsv(const QString& filename,  QStringList data) {
         for (int i = 0; i < data.size(); i++)
         {
             file.write(data[i].toStdString().c_str());/*写入每一行数据到文件*/
+        }
+        file.close();
+    }
+}
+void page3::readcsv(const QString& filename)
+{
+    QFile file(filename);
+    if (file.open(QIODevice::ReadOnly))
+    {
+        QTextStream stream_text(&file);
+        while (!stream_text.atEnd())
+        {
+            QString line = stream_text.readLine();
+            line.append("\n"); // 添加换行符
+            //qDebug()<<line;
+            data.append(line);
         }
         file.close();
     }

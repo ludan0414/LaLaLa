@@ -41,7 +41,9 @@ page2::page2(QWidget *parent)
     }
     QTime time= QTime::currentTime();
     srand(time.msec()+time.second()*1000);
-    this->n= rand()%70;    //产生70以内的随机数
+    this->n= rand()%70;
+    if(n==0)
+        n++;    //产生70以内的随机数
     question=lines.at((n-1)*8);
     answerA=lines.at((n-1)*8+1);
     answerB=lines.at((n-1)*8+2);
@@ -72,13 +74,13 @@ page2::page2(QWidget *parent)
     layout->addLayout(layout1);
     layout->addLayout(layout2);
     this->setLayout(layout);
-    //layout2->setSizeConstraint(QLayout::SetFixedSize);
     this->flaga=false;
     this->flagb=false;
     this->flagc=false;
     this->flagd=false;
     this->haschosed=false;
-    data<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n";
+    readcsv("achievement.csv");
+    //data<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n";
     connect(A, &QRadioButton::clicked, this,[&]() {
         this->flaga=!this->flaga;
         haschosed=true;
@@ -167,18 +169,11 @@ page2::page2(QWidget *parent)
         this->close();
         if(rightnum>=3)
             data[0]="TRUE\n";
-        else if(rightnum>=5)
-        {
-            data[0]="TRUE\n";
+        if(rightnum>=5)
             data[1]="TRUE\n";
-        }
-        else if(rightnum==10)
-        {
-            data[0]="TRUE\n";
-            data[1]="TRUE\n";
+        if(rightnum==10)
             data[2]="TRUE\n";
-        }
-        else if(rightnum==0)
+        if(rightnum==0)
             data[8]="TRUE\n";
         for(int i=0;i<=7;i++)
         {
@@ -216,6 +211,21 @@ void page2::writecsv(const QString& filename,  QStringList data) {
         for (int i = 0; i < data.size(); i++)
         {
             file.write(data[i].toStdString().c_str());/*写入每一行数据到文件*/
+        }
+        file.close();
+    }
+}
+void page2::readcsv(const QString& filename)
+{
+    QFile file(filename);
+    if (file.open(QIODevice::ReadOnly))
+    {
+        QTextStream stream_text(&file);
+        while (!stream_text.atEnd())
+        {
+            QString line = stream_text.readLine();
+            line.append("\n"); // 添加换行符
+            data.append(line);
         }
         file.close();
     }

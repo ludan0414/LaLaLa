@@ -53,6 +53,7 @@ private:
     void updatetime();
     static bool visible;
     void writecsv(const QString& filename,  QStringList data);
+    void readcsv(const QString& filename);
 
 private slots:
     void switchpage(bool flaga,bool flagb,bool flagc,bool flagd,QString s,QString r,int n_);

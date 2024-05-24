@@ -20,7 +20,7 @@ page4::page4(QWidget *parent)
     }
     listwidget->resize(600,600);
     listwidget->setIconSize(QSize(50,50));
-    QListWidgetItem *item1 = new QListWidgetItem("铜章：标准模式下一次性答对3题");
+    QListWidgetItem *item1 = new QListWidgetItem("铜章：标准模式下一次性答对三题");
     QIcon icon1(":/material3/黄铜章.png");
     QPixmap disabledPixmap1 = icon1.pixmap(QSize(50, 50), QIcon::Disabled);
     QIcon disabledIcon1(disabledPixmap1); // 创建禁用状态的图标对象
@@ -30,7 +30,7 @@ page4::page4(QWidget *parent)
         item1->setIcon(icon1);
     item1->setSizeHint(QSize(100, 50));
     listwidget->addItem(item1);
-    QListWidgetItem *item2 = new QListWidgetItem("银章：标准模式下一次性答对5题");
+    QListWidgetItem *item2 = new QListWidgetItem("银章：标准模式下一次性答对五题");
     QIcon icon2(":/material3/银章.png");
     QPixmap disabledPixmap2 = icon2.pixmap(QSize(50, 50), QIcon::Disabled); // 将图标渲染成禁用状态
     QIcon disabledIcon2(disabledPixmap2); // 创建禁用状态的图标对象
@@ -40,7 +40,7 @@ page4::page4(QWidget *parent)
         item2->setIcon(icon2);
     item2->setSizeHint(QSize(100, 50));
     listwidget->addItem(item2);
-    QListWidgetItem *item3 = new QListWidgetItem("金章：标准模式下一次性答对10题");
+    QListWidgetItem *item3 = new QListWidgetItem("金章：标准模式下一次性答对十题");
     QIcon icon3(":/material3/黄金.png");
     QPixmap disabledPixmap3 = icon3.pixmap(QSize(50, 50), QIcon::Disabled);
     QIcon disabledIcon3(disabledPixmap3);
@@ -51,7 +51,7 @@ page4::page4(QWidget *parent)
     item3->setSizeHint(QSize(100, 50));
     listwidget->addItem(item3);
 
-    QListWidgetItem *item4 = new QListWidgetItem("铂金：限时模式下一次性答对10题");
+    QListWidgetItem *item4 = new QListWidgetItem("铂金：限时模式下一次性答对十题");
     QIcon icon4(":/material3/铂金.png");
     QPixmap disabledPixmap4 = icon4.pixmap(QSize(50, 50), QIcon::Disabled);
     QIcon disabledIcon4(disabledPixmap4);
@@ -62,18 +62,18 @@ page4::page4(QWidget *parent)
     item4->setSizeHint(QSize(100, 50));
     listwidget->addItem(item4);
 
-    QListWidgetItem *item5 = new QListWidgetItem("白金：限时模式下一次性答对20题");
+    QListWidgetItem *item5 = new QListWidgetItem("白金：限时模式下一次性答对二十题");
     QIcon icon5(":/material3/白金.png");
     QPixmap disabledPixmap5 = icon5.pixmap(QSize(50, 50), QIcon::Disabled);
     QIcon disabledIcon5(disabledPixmap5);
     if(list[4]=="FALSE")
-        item5->setIcon(disabledIcon4);
+        item5->setIcon(disabledIcon5);
     else
-        item5->setIcon(icon4);
+        item5->setIcon(icon5);
     item5->setSizeHint(QSize(100, 50));
     listwidget->addItem(item5);
 
-    QListWidgetItem *item6 = new QListWidgetItem("王者：此次挑战所有回答全部正确且答题数超过30");
+    QListWidgetItem *item6 = new QListWidgetItem("王者：此次挑战所有回答全部正确且答题数超过三十");
     QIcon icon6(":/material3/冠军.png");
     QPixmap disabledPixmap6 = icon6.pixmap(QSize(50, 50), QIcon::Disabled);
     QIcon disabledIcon6(disabledPixmap6);
@@ -84,7 +84,7 @@ page4::page4(QWidget *parent)
     item6->setSizeHint(QSize(100, 50));
     listwidget->addItem(item6);
 
-    QListWidgetItem *item7 = new QListWidgetItem("红宝石：标准模式下挑战连对3题");
+    QListWidgetItem *item7 = new QListWidgetItem("红宝石：标准模式下挑战连对三题");
     QIcon icon7(":/material3/红宝石.png");
     QPixmap disabledPixmap7 = icon7.pixmap(QSize(50, 50), QIcon::Disabled);
     QIcon disabledIcon7(disabledPixmap7);
@@ -95,7 +95,7 @@ page4::page4(QWidget *parent)
     item7->setSizeHint(QSize(100, 50));
     listwidget->addItem(item7);
 
-    QListWidgetItem *item8 = new QListWidgetItem("紫宝石：标准模式下挑战连对5题");
+    QListWidgetItem *item8 = new QListWidgetItem("紫宝石：标准模式下挑战连对五题");
     QIcon icon8(":/material3/紫宝石.png");
     QPixmap disabledPixmap8 = icon8.pixmap(QSize(50, 50), QIcon::Disabled);
     QIcon disabledIcon8(disabledPixmap8);
