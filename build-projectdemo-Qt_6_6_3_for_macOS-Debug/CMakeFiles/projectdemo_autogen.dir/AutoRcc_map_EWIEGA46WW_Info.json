@@ -1,0 +1,22 @@
+{
+	"BUILD_DIR" : "/Users/moyoumo/Desktop/LaLaLa/build-projectdemo-Qt_6_6_3_for_macOS-Debug/projectdemo_autogen",
+	"CMAKE_BINARY_DIR" : "/Users/moyoumo/Desktop/LaLaLa/build-projectdemo-Qt_6_6_3_for_macOS-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/Users/moyoumo/Desktop/LaLaLa/build-projectdemo-Qt_6_6_3_for_macOS-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/Users/moyoumo/Desktop/LaLaLa/projectdemo",
+	"CMAKE_SOURCE_DIR" : "/Users/moyoumo/Desktop/LaLaLa/projectdemo",
+	"INCLUDE_DIR" : "/Users/moyoumo/Desktop/LaLaLa/build-projectdemo-Qt_6_6_3_for_macOS-Debug/projectdemo_autogen/include",
+	"INPUTS" : 
+	[
+		"/Users/moyoumo/Desktop/LaLaLa/projectdemo/\u5168\u56fewith\u56fe\u4f8b.png"
+	],
+	"LOCK_FILE" : "/Users/moyoumo/Desktop/LaLaLa/build-projectdemo-Qt_6_6_3_for_macOS-Debug/CMakeFiles/projectdemo_autogen.dir/AutoRcc_map_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--no-zstd", "-name", "map" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_map.cpp",
+	"RCC_EXECUTABLE" : "/Users/moyoumo/Qt/6.6.3/macos/./libexec/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/Users/moyoumo/Desktop/LaLaLa/build-projectdemo-Qt_6_6_3_for_macOS-Debug/CMakeFiles/projectdemo_autogen.dir/AutoRcc_map_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/Users/moyoumo/Desktop/LaLaLa/projectdemo/map.qrc",
+	"VERBOSITY" : 0
+}

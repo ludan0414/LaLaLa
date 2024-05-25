@@ -1,0 +1,33 @@
+{
+	"BUILD_DIR" : "/Users/moyoumo/Desktop/LaLaLa/build-projectdemo-Qt_6_6_3_for_macOS-Debug/projectdemo_autogen",
+	"CMAKE_BINARY_DIR" : "/Users/moyoumo/Desktop/LaLaLa/build-projectdemo-Qt_6_6_3_for_macOS-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/Users/moyoumo/Desktop/LaLaLa/build-projectdemo-Qt_6_6_3_for_macOS-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/Users/moyoumo/Desktop/LaLaLa/projectdemo",
+	"CMAKE_SOURCE_DIR" : "/Users/moyoumo/Desktop/LaLaLa/projectdemo",
+	"INCLUDE_DIR" : "/Users/moyoumo/Desktop/LaLaLa/build-projectdemo-Qt_6_6_3_for_macOS-Debug/projectdemo_autogen/include",
+	"INPUTS" : 
+	[
+		"/Users/moyoumo/Desktop/LaLaLa/projectdemo/background1.jpg",
+		"/Users/moyoumo/Desktop/LaLaLa/projectdemo/\u94c2\u91d1.png",
+		"/Users/moyoumo/Desktop/LaLaLa/projectdemo/\u7d2b\u5b9d\u77f3.png",
+		"/Users/moyoumo/Desktop/LaLaLa/projectdemo/\u9ec4\u91d1.png",
+		"/Users/moyoumo/Desktop/LaLaLa/projectdemo/\u767d\u91d1.png",
+		"/Users/moyoumo/Desktop/LaLaLa/projectdemo/\u9ec4\u94dc\u7ae0.png",
+		"/Users/moyoumo/Desktop/LaLaLa/projectdemo/\u7eff\u5b9d\u77f3.png",
+		"/Users/moyoumo/Desktop/LaLaLa/projectdemo/\u94f6\u7ae0.png",
+		"/Users/moyoumo/Desktop/LaLaLa/projectdemo/\u51a0\u519b.png",
+		"/Users/moyoumo/Desktop/LaLaLa/projectdemo/\u7ea2\u5b9d\u77f3.png",
+		"/Users/moyoumo/Desktop/LaLaLa/projectdemo/\u94bb\u77f3.png",
+		"/Users/moyoumo/Desktop/LaLaLa/projectdemo/background_function3.jpg"
+	],
+	"LOCK_FILE" : "/Users/moyoumo/Desktop/LaLaLa/build-projectdemo-Qt_6_6_3_for_macOS-Debug/CMakeFiles/projectdemo_autogen.dir/AutoRcc_material_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--no-zstd", "-name", "material" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_material.cpp",
+	"RCC_EXECUTABLE" : "/Users/moyoumo/Qt/6.6.3/macos/./libexec/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/Users/moyoumo/Desktop/LaLaLa/build-projectdemo-Qt_6_6_3_for_macOS-Debug/CMakeFiles/projectdemo_autogen.dir/AutoRcc_material_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/Users/moyoumo/Desktop/LaLaLa/projectdemo/material.qrc",
+	"VERBOSITY" : 0
+}

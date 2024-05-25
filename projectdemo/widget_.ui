@@ -121,8 +121,17 @@
      <height>32</height>
     </rect>
    </property>
+   <property name="mouseTracking">
+    <bool>true</bool>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>区域A</string>
+   </property>
+   <property name="autoDefault">
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="AreaB_pushButton">
@@ -133,6 +142,9 @@
      <width>100</width>
      <height>32</height>
     </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>区域B</string>
@@ -160,6 +172,9 @@
      <height>32</height>
     </rect>
    </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>区域D</string>
    </property>
@@ -172,6 +187,9 @@
      <width>100</width>
      <height>32</height>
     </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
    </property>
    <property name="text">
     <string>区域C</string>
