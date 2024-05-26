@@ -74,11 +74,12 @@ void Widget::on_confirm_clicked()
         QStandardItem *item = new QStandardItem(QString::fromStdString(i));
         if(++cnt % 2 == 1)
         {
-            QLinearGradient linearGrad(QPointF(0, 0), QPointF(200, 200));
-            linearGrad.setColorAt(0, Qt::cyan);
-            linearGrad.setColorAt(1, Qt::cyan);
-            QBrush brush(linearGrad);
-            item->setBackground(brush);
+            QBrush brusho(QColor(78,228,233,55));
+            item->setBackground(brusho);
+        }
+        else{
+            QBrush brusho(QColor(243,241,209,100));
+            item->setBackground(brusho);
         }
         model->appendRow(item);
     }
@@ -87,6 +88,7 @@ void Widget::on_confirm_clicked()
         QStandardItem *item = new QStandardItem("啊哦，数据库里暂时没有收录这种垃圾！您可以尝试手动添加。");
         model->appendRow(item);
     }
+    ui->showgarbage->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->showgarbage->setModel(model);
 }
 

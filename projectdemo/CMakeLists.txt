@@ -45,6 +45,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         page4.h page4.cpp page4.ui
         material.qrc
         tip_.h tip_.cpp tip_.ui
+        resource.qrc
 
     )
 # Define target properties for Android with Qt 6 as:

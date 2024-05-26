@@ -19,6 +19,7 @@ customdic::customdic(QWidget *parent)
     ui->new_2->setEnabled(0);
     ui->change->setEnabled(0);
     ui->delete_2->setEnabled(0);
+    ui->viewcustom->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 customdic::~customdic()
 {
