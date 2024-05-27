@@ -13,6 +13,7 @@ page2::page2(QWidget *parent)
     , ui(new Ui::page2)
 {
     ui->setupUi(this);
+    setWindowTitle("标准模式");
     this->resize(500,350);
     rightnum=0;
     number=2;
@@ -80,7 +81,6 @@ page2::page2(QWidget *parent)
     this->flagd=false;
     this->haschosed=false;
     readcsv("achievement.csv");
-    //data<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n";
     connect(A, &QRadioButton::clicked, this,[&]() {
         this->flaga=!this->flaga;
         haschosed=true;

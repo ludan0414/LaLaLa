@@ -9,6 +9,7 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
+    setWindowTitle("垃圾检索");
     ui->confirm->setEnabled(0);
     ui->addgarbage->setEnabled(0);
 }

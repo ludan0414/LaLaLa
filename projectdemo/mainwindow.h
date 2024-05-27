@@ -15,7 +15,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
-    QPushButton *button1=new QPushButton("垃圾词条库",this);
+    QPushButton *button1=new QPushButton("垃圾检索",this);
     QPushButton *button2=new QPushButton("校园垃圾桶向导",this);
     QPushButton *button3=new QPushButton("问答挑战",this);
     ~MainWindow();

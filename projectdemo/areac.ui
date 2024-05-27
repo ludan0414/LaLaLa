@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="title.qrc">
+    <normaloff>:/function2title/title3.png</normaloff>:/function2title/title3.png</iconset>
+  </property>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
@@ -43,6 +47,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="title.qrc"/>
+ </resources>
  <connections/>
 </ui>

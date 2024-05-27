@@ -13,6 +13,7 @@ page1::page1(QWidget *parent)
 {
     ui->setupUi(this);
     this->resize(400,600);
+    setWindowTitle("问答挑战");
     QPalette palette;
     QPixmap pixmap(":/material2/background_function3.jpg");
     palette.setBrush(QPalette::Window,QBrush(pixmap));

@@ -7,6 +7,7 @@ page4::page4(QWidget *parent)
     , ui(new Ui::page4)
 {
     ui->setupUi(this);
+    setWindowTitle("解锁成就");
     this->resize(600,600);
     QFile infile("achievement.csv");
     if (infile.open(QIODevice::ReadOnly))

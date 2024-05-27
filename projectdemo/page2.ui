@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="title.qrc">
+    <normaloff>:/function3title/title4.png</normaloff>:/function3title/title4.png</iconset>
+  </property>
   <widget class="QTextEdit" name="textEdit">
    <property name="geometry">
     <rect>
@@ -24,6 +28,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="title.qrc"/>
+ </resources>
  <connections/>
 </ui>

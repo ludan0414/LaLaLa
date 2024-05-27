@@ -7,6 +7,7 @@ widget_::widget_(QWidget *parent)
     , ui(new Ui::widget_)
 {
     ui->setupUi(this);
+    setWindowTitle("校园垃圾桶向导");
     QList<QPushButton*> buttons = this->findChildren<QPushButton*>();
     foreach (QPushButton* button, buttons) {
         button->setStyleSheet(
@@ -33,10 +34,6 @@ widget_::widget_(QWidget *parent)
             "}"
             );
     }
-    //ui->AreaA_pushButton->setStyleSheet("QPushButton:hover{background-color:white; color: black;}");
-    //ui->AreaB_pushButton->setStyleSheet("QPushButton:hover{background-color:white; color: black;}");
-    //ui->AreaC_pushButton->setStyleSheet("QPushButton:hover{background-color:white; color: black;}");
-    //ui->AreaD_pushButton->setStyleSheet("QPushButton:hover{background-color:white; color: black;}");
     this->resize(800,600);
     this->a = new AreaA;
     connect(this->a,SIGNAL(back()),this,SLOT(comeBackToPrev()));

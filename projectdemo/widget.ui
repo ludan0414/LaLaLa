@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Widget</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="title.qrc">
+    <normaloff>:/function1title/title2.png</normaloff>:/function1title/title2.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true"/>
   </property>
@@ -167,6 +171,8 @@
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="title.qrc"/>
+ </resources>
  <connections/>
 </ui>

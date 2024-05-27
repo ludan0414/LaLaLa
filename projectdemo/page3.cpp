@@ -17,15 +17,18 @@ page3::page3(QWidget *parent)
     , ui(new Ui::page3)
 {
     ui->setupUi(this);
+    setWindowTitle("限时模式");
     this->resize(500,350);
     readcsv("achievement.csv");
-    //data<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n"<<"FALSE\n";
     timer = new QTimer(this);
     TimeRecord = new QTime(0, 1, 0); // 初始化 QTime 为 00:01:00
     Time = new QLCDNumber(this);
     Time->setDigitCount(8);
-    Time->setStyleSheet("QLCDNumber { background-color: black; }");
-    Time->setStyleSheet("background:black;color:#00ccff;");
+    Time->setSegmentStyle(QLCDNumber::Flat);
+    QPalette lcdpat = Time->palette();
+    lcdpat.setColor(QPalette::Normal,QPalette::WindowText,Qt::blue);
+    Time->setPalette(lcdpat);
+    Time->setStyleSheet("background:transparent;");
     Time->display(TimeRecord->toString("mm:ss"));
     connect(timer, &QTimer::timeout, this, &page3::updatetime);
     timer->start(1000);
@@ -58,7 +61,6 @@ page3::page3(QWidget *parent)
     this->n= rand()%40;//产生40以内的随机数
     if(n==0)
         n++;
-    //qDebug()<<n;
     question=lines.at((n-1)*8);
     answerA=lines.at((n-1)*8+1);
     answerB=lines.at((n-1)*8+2);
@@ -225,19 +227,17 @@ void page3::updatetime()
 {
     int secondsLeft = QTime(0, 0).secsTo(*TimeRecord);
     if (secondsLeft== 0) {
-        //qDebug()<<"haha";
         timer->stop();// 停止计时器
         flash.stop();
+        emit timeup();
         this->close();
         over->setVisible(false);
         nextpage->setVisible(false);
         Time->setVisible(true);
-        emit timeup();
     }
     else {
         if(secondsLeft == 5)
         {
-            //qDebug()<<"haha";
             emit flashtime();
         }
         *TimeRecord = TimeRecord->addSecs(-1);
@@ -249,24 +249,22 @@ void page3::handleflash()
     if (!flash.isActive()) {
         flash.start(100); // 启动闪烁定时器
     }
-    //qDebug() << visible;
-    QPalette palette = Time->palette();
+    QPalette lcdpat = Time->palette();
     if (visible) {
-        Time->setStyleSheet("background:red;");
+        lcdpat.setColor(QPalette::Normal,QPalette::WindowText,Qt::blue);
     } else {
-        Time->setStyleSheet("background:black;");
+        lcdpat.setColor(QPalette::Normal,QPalette::WindowText,Qt::red);
     }
-    Time->setPalette(palette);
+    Time->setPalette(lcdpat);
     visible = !visible; // 切换可见性
 }
 void page3::writecsv(const QString& filename,  QStringList data) {
     QFile file(filename);
-    //以只写方式打开，完全重写数据
     if (file.open(QIODevice::WriteOnly))
     {
         for (int i = 0; i < data.size(); i++)
         {
-            file.write(data[i].toStdString().c_str());/*写入每一行数据到文件*/
+            file.write(data[i].toStdString().c_str());
         }
         file.close();
     }
@@ -281,7 +279,6 @@ void page3::readcsv(const QString& filename)
         {
             QString line = stream_text.readLine();
             line.append("\n"); // 添加换行符
-            //qDebug()<<line;
             data.append(line);
         }
         file.close();

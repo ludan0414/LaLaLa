@@ -10,6 +10,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    setWindowTitle("refuse classification");
+
     this->resize(400,600);
     QWidget *widget=new QWidget(this);
     this->setCentralWidget(widget);

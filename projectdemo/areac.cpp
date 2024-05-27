@@ -6,6 +6,7 @@ AreaC::AreaC(QWidget *parent)
     , ui(new Ui::AreaC)
 {
     ui->setupUi(this);
+    setWindowTitle("区域3");
 }
 
 AreaC::~AreaC()
