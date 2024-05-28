@@ -20,13 +20,13 @@ public:
     explicit page3(QWidget *parent = nullptr);
     ~page3();
 private:
-    QPushButton *nextpage=new QPushButton;
-    QPushButton *over=new QPushButton;
-    QRadioButton *A=new QRadioButton;
-    QRadioButton *B=new QRadioButton;
-    QRadioButton *C=new QRadioButton;
-    QRadioButton *D=new QRadioButton;
-    QTextEdit *q=new QTextEdit;
+    QPushButton *nextpage=new QPushButton(this);
+    QPushButton *over=new QPushButton(this);
+    QRadioButton *A=new QRadioButton(this);
+    QRadioButton *B=new QRadioButton(this);
+    QRadioButton *C=new QRadioButton(this);
+    QRadioButton *D=new QRadioButton(this);
+    QTextEdit *q=new QTextEdit(this);
     QString correctanswer;
     QString reason;
     int n;//从0-70 第一道题的题号

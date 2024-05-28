@@ -74,7 +74,7 @@ page4::page4(QWidget *parent)
     item5->setSizeHint(QSize(100, 50));
     listwidget->addItem(item5);
 
-    QListWidgetItem *item6 = new QListWidgetItem("王者：此次挑战所有回答全部正确且答题数超过三十");
+    QListWidgetItem *item6 = new QListWidgetItem("王者：限时模式所有回答全部正确且答题数超过三十");
     QIcon icon6(":/material3/冠军.png");
     QPixmap disabledPixmap6 = icon6.pixmap(QSize(50, 50), QIcon::Disabled);
     QIcon disabledIcon6(disabledPixmap6);

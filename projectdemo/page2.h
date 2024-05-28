@@ -5,6 +5,7 @@
 #include<QPushButton>
 #include<qradiobutton.h>
 #include<QTextEdit>
+#include<QLabel>
 #include<qstring.h>
 namespace Ui {
 class page2;
@@ -18,13 +19,14 @@ public:
     explicit page2(QWidget *parent = nullptr);
     ~page2();
 private:
-    QPushButton *nextpage=new QPushButton;
-    QPushButton *over=new QPushButton;
-    QRadioButton *A=new QRadioButton;
-    QRadioButton *B=new QRadioButton;
-    QRadioButton *C=new QRadioButton;
-    QRadioButton *D=new QRadioButton;
-    QTextEdit *q=new QTextEdit;
+    QPushButton *nextpage=new QPushButton("下一题",this);
+    QPushButton *over=new QPushButton("结束挑战",this);
+    QLabel displaynum;
+    QRadioButton *A=new QRadioButton(this);
+    QRadioButton *B=new QRadioButton(this);
+    QRadioButton *C=new QRadioButton(this);
+    QRadioButton *D=new QRadioButton(this);
+    QTextEdit *q=new QTextEdit(this);
     QString correctanswer;
     QString reason;
     int n;//从0-70 第一道题的题号
@@ -46,6 +48,9 @@ private:
     int myanswer[11];
     void writecsv(const QString& filename,  QStringList data);
     void readcsv(const QString& filename);
+    void init();
+    void addlayout();
+    void connectRadioButton(QRadioButton *button);
 
 private slots:
     void switchpage(bool flaga,bool flagb,bool flagc,bool flagd,QString s,QString r,int n_);

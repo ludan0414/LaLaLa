@@ -21,9 +21,9 @@ page3::page3(QWidget *parent)
     this->resize(500,350);
     readcsv("achievement.csv");
     timer = new QTimer(this);
-    TimeRecord = new QTime(0, 1, 0); // 初始化 QTime 为 00:01:00
+    TimeRecord = new QTime(0,0,30); // 初始化 QTime 为 00:01:00
     Time = new QLCDNumber(this);
-    Time->setDigitCount(8);
+    Time->setDigitCount(4);
     Time->setSegmentStyle(QLCDNumber::Flat);
     QPalette lcdpat = Time->palette();
     lcdpat.setColor(QPalette::Normal,QPalette::WindowText,Qt::blue);
@@ -32,21 +32,12 @@ page3::page3(QWidget *parent)
     Time->display(TimeRecord->toString("mm:ss"));
     connect(timer, &QTimer::timeout, this, &page3::updatetime);
     timer->start(1000);
-    rightnum=0;
-    wrongnum=0;
-    num=0;
-    number=3;
-    nextpage->setParent(this);
-    nextpage->setText("跳过本题");
-    over->setParent(this);
-    over->setText("结束挑战");
-    A->setParent(this);
-    B->setParent(this);
-    C->setParent(this);
-    D->setParent(this);
-    q->setParent(this);
+    rightnum=0;wrongnum=0;num=0;number=3;
+    nextpage->setText("跳过本题");over->setText("结束挑战");
+    q->setStyleSheet("QTextEdit { background-color: rgba(132, 112, 255, 15); }");
+    q->setStyleSheet(q->styleSheet() + " QTextEdit { color: black; font-size: 13pt; font-weight: bold; font-style: italic; }");
+    q->setMaximumHeight(100);over->setMinimumHeight(30);nextpage->setMinimumHeight(30);
     QFile inFile("QandA.csv");
-    int num=0;
     if (inFile.open(QIODevice::ReadOnly))
     {
         QTextStream stream_text(&inFile);
@@ -59,8 +50,7 @@ page3::page3(QWidget *parent)
     QTime time= QTime::currentTime();
     srand(time.msec()+time.second()*1000);
     this->n= rand()%40;//产生40以内的随机数
-    if(n==0)
-        n++;
+    if(n==0)  n++;
     question=lines.at((n-1)*8);
     answerA=lines.at((n-1)*8+1);
     answerB=lines.at((n-1)*8+2);
@@ -74,38 +64,35 @@ page3::page3(QWidget *parent)
     B->setText(answerB);
     C->setText(answerC);
     D->setText(answerD);
+    QFont font("Arial", 12);
     QList<QRadioButton*> buttons = this->findChildren<QRadioButton*>();
     foreach (QRadioButton* button, buttons) {
-        button->setStyleSheet("QRadioButton:pressed {background-color: rgb(0, 255, 0);}");
+        button->setStyleSheet("QRadioButton:pressed {background-color: rgb(0, 191, 255);}");
+        button->setMinimumHeight(20);
+        button->setFont(font);
     }
     QVBoxLayout *layout1=new QVBoxLayout;
     QHBoxLayout *layout2=new QHBoxLayout;
     layout2->addWidget(nextpage);
     layout2->addWidget(over);
+    layout1->addWidget(Time);
     layout1->addWidget(q);
     layout1->addWidget(A);
     layout1->addWidget(B);
     layout1->addWidget(C);
     layout1->addWidget(D);
-    layout1->addWidget(Time);
+    layout1->setSpacing(14);
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addLayout(layout1);
     layout->addLayout(layout2);
     this->setLayout(layout);
-    //layout2->setSizeConstraint(QLayout::SetFixedSize);
-    this->flaga=false;
-    this->flagb=false;
-    this->flagc=false;
-    this->flagd=false;
-    this->haschosed=false;
+    this->flaga=false;this->flagb=false;this->flagc=false;this->flagd=false;this->haschosed=false;
     connect(A, &QRadioButton::clicked, this,[&]() {
         this->flaga=!this->flaga;
         haschosed=true;
         if(haschosed)
         {
-            B->setEnabled(false);
-            C->setEnabled(false);
-            D->setEnabled(false);
+            B->setEnabled(false);C->setEnabled(false);D->setEnabled(false);
             if(this->correctanswer=="A")
                 rightnum++;
             else
@@ -118,9 +105,7 @@ page3::page3(QWidget *parent)
         haschosed=true;
         if(haschosed)
         {
-            A->setEnabled(false);
-            C->setEnabled(false);
-            D->setEnabled(false);
+            A->setEnabled(false);C->setEnabled(false);D->setEnabled(false);
             if(this->correctanswer=="B")
                 rightnum++;
             else
@@ -133,9 +118,7 @@ page3::page3(QWidget *parent)
         haschosed=true;
         if(haschosed)
         {
-            B->setEnabled(false);
-            C->setEnabled(false);
-            A->setEnabled(false);
+            B->setEnabled(false);C->setEnabled(false);A->setEnabled(false);
             if(this->correctanswer=="C")
                 rightnum++;
             else
@@ -148,9 +131,7 @@ page3::page3(QWidget *parent)
         haschosed=true;
         if(haschosed)
         {
-            B->setEnabled(false);
-            C->setEnabled(false);
-            A->setEnabled(false);
+            B->setEnabled(false);C->setEnabled(false);A->setEnabled(false);
             if(this->correctanswer=="D")
                 rightnum++;
             else
@@ -201,19 +182,10 @@ page3::~page3()
 }
 void page3::switchpage(bool flaga,bool flagb,bool flagc,bool flagd,QString s,QString r,int n_)
 {
-    this->flaga=false;
-    this->flagb=false;
-    this->flagc=false;
-    this->flagd=false;
-    this->haschosed=false;
+    this->flaga=false;this->flagb=false;this->flagc=false;this->flagd=false;this->haschosed=false;
     n++;
-    q->setText(lines.at((n-1)*8));
-    A->setText(lines.at((n-1)*8+1));
-    B->setText(lines.at((n-1)*8+2));
-    C->setText(lines.at((n-1)*8+3));
-    D->setText(lines.at((n-1)*8+4));
-    correctanswer=lines.at((n-1)*8+5);
-    reason=lines.at((n-1)*8+6);
+    q->setText(lines.at((n-1)*8));A->setText(lines.at((n-1)*8+1)); B->setText(lines.at((n-1)*8+2));
+    C->setText(lines.at((n-1)*8+3));D->setText(lines.at((n-1)*8+4));correctanswer=lines.at((n-1)*8+5);reason=lines.at((n-1)*8+6);
     QList<QRadioButton*> buttons = this->findChildren<QRadioButton*>();
     foreach (QRadioButton* button, buttons) {
         button->setEnabled(true);
@@ -229,11 +201,8 @@ void page3::updatetime()
     if (secondsLeft== 0) {
         timer->stop();// 停止计时器
         flash.stop();
-        emit timeup();
         this->close();
-        over->setVisible(false);
-        nextpage->setVisible(false);
-        Time->setVisible(true);
+        emit timeup();
     }
     else {
         if(secondsLeft == 5)
