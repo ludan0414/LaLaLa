@@ -30,6 +30,7 @@ private slots:
 
     void on_addgarbage_clicked();
 
+
 private:
     Ui::Widget *ui;
 };

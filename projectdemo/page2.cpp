@@ -53,17 +53,35 @@ page2::page2(QWidget *parent)
     connect(over,&QPushButton::clicked,this,[&](){
         this->close();
         if(rightnum>=3)
+        {
+            if(data[0]!="TRUE\n")
+                newgrade=true;
             data[0]="TRUE\n";
+        }
         if(rightnum>=5)
+        {
+            if(data[1]!="TRUE\n")
+                newgrade=true;
             data[1]="TRUE\n";
+        }
         if(rightnum==10)
+        {
+            if(data[2]!="TRUE\n")
+                newgrade=true;
             data[2]="TRUE\n";
+        }
         if(rightnum==0)
+        {
+            if(data[8]!="TRUE\n")
+                newgrade=true;
             data[8]="TRUE\n";
+        }
         for(int i=0;i<=7;i++)
         {
             if(myanswer[i]==1&&myanswer[i+1]==1&&myanswer[i+2]==1)
             {
+                if(data[6]!="TRUE\n")
+                    newgrade=true;
                 data[6]="TRUE\n";
                 break;
             }
@@ -72,13 +90,15 @@ page2::page2(QWidget *parent)
         {
             if(myanswer[i]==1&&myanswer[i+1]==1&&myanswer[i+2]==1&&myanswer[i+3]==1&&myanswer[i+4]==1)
             {
-                data[6]="TRUE\n";
+                if(data[7]!="TRUE\n")
+                    newgrade=true;
                 data[7]="TRUE\n";
+                newgrade=true;
                 break;
             }
         }
         writecsv("achievement.csv",data);
-        tip_ *tips=new tip_(rightnum);
+        tip_ *tips=new tip_(rightnum,newgrade);
         tips->show();
     });
 }
@@ -149,7 +169,7 @@ void page2::switchpage(bool flaga,bool flagb,bool flagc,bool flagd,QString s,QSt
 }
 void page2::init()
 {
-    rightnum=0;number=2;num=0;
+    rightnum=0;number=2;num=0;newgrade=false;
     for(int i=0;i<10;i++)
         myanswer[i]=0;
     this->flaga=false;this->flagb=false;this->flagc=false;this->flagd=false;this->haschosed=false;

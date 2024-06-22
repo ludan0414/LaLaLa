@@ -3,7 +3,7 @@
 #include "customdic.h"
 #include <QStandardItemModel>
 #include <QDebug>
-
+#include <QTextCursor>
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
@@ -12,6 +12,34 @@ Widget::Widget(QWidget *parent)
     setWindowTitle("垃圾检索");
     ui->confirm->setEnabled(0);
     ui->addgarbage->setEnabled(0);
+    ui->textEdit->setEnabled(0);
+    ui->choosecity->setItemIcon(1,QIcon(":/material3/天坛.png"));
+    ui->choosecity->setItemIcon(2,QIcon(":/material3/上海.png"));
+    ui->choosecity->setItemIcon(3,QIcon(":/material3/广州塔.png"));
+    QList<QPushButton *> allButtons = this->findChildren<QPushButton *>();
+    for (QPushButton *button : allButtons) {
+        button->setStyleSheet(
+            "QPushButton {"
+            "    border-style: outset;"
+            "    border-width: 2px;"
+            "    border-radius: 10px;"
+            "    border-color: #AFEEEE;"
+            "    font: bold 18px;"
+            "    min-width: 2em;"
+            "    color: black;" /* 字体颜色 */
+            "    padding: 4px;"
+            "    transition: transform 0.2s;"
+            "}"
+            "QPushButton:hover {"
+            "    background-color: rgb(135, 206, 235);"
+            "    border-width: 4px;"
+            "}"
+            "QPushButton:pressed {"
+            "    background-color: rgb(28,134,238);"
+            "    border-style: inset;"
+            "}"
+            );
+    }
 }
 
 Widget::~Widget()
@@ -23,19 +51,16 @@ int cityid;
 std::vector<std::string> findgarbage(std::string,int);
 void Widget::on_comboBox_editTextChanged(const QString &arg1)
 {
-
 }
 
 
 void Widget::on_choosecity_editTextChanged(const QString &arg1)
 {
-
 }
 
 
 void Widget::on_entergarbage_textChanged()
 {
-
 }
 
 
@@ -99,4 +124,3 @@ void Widget::on_addgarbage_clicked()
     customdic *Customdic = new customdic;
     Customdic->show();
 }
-

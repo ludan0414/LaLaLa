@@ -32,7 +32,7 @@ page3::page3(QWidget *parent)
     Time->display(TimeRecord->toString("mm:ss"));
     connect(timer, &QTimer::timeout, this, &page3::updatetime);
     timer->start(1000);
-    rightnum=0;wrongnum=0;num=0;number=3;
+    rightnum=0;wrongnum=0;num=0;number=3;newgrade=false;
     nextpage->setText("跳过本题");over->setText("结束挑战");
     q->setStyleSheet("QTextEdit { background-color: rgba(132, 112, 255, 15); }");
     q->setStyleSheet(q->styleSheet() + " QTextEdit { color: black; font-size: 13pt; font-weight: bold; font-style: italic; }");
@@ -146,30 +146,63 @@ page3::page3(QWidget *parent)
 
     connect(over,&QPushButton::clicked,this,[&](){
         this->close();
+        timer->stop();
         if(rightnum>=10)
+        {
+            if(data[3]!="TRUE\n")
+                newgrade=true;
             data[3]="TRUE\n";
+        }
         if(rightnum>=20)
+        {
+            if(data[4]!="TRUE\n")
+                newgrade=true;
             data[4]="TRUE\n";
+        }
         if(wrongnum==0&&rightnum>=30)
+        {
+            if(data[5]!="TRUE\n")
+                newgrade=true;
             data[5]="TRUE\n";
+        }
         if(rightnum==0)
+        {
+            if(data[8]!="TRUE\n")
+                newgrade=true;
             data[8]="TRUE\n";
+        }
         writecsv("achievement.csv",data);
-        tip_ *tips=new tip_(rightnum);
+        tip_ *tips=new tip_(rightnum,newgrade);
         tips->show();
     });
     connect(this, &page3::timeup, this, [&]() {
         this->close();
         if(rightnum>=10)
+        {
+            if(data[3]!="TRUE\n")
+                newgrade=true;
             data[3]="TRUE\n";
+        }
         if(rightnum>=20)
+        {
+            if(data[4]!="TRUE\n")
+                newgrade=true;
             data[4]="TRUE\n";
+        }
         if(wrongnum==0&&rightnum>=30)
+        {
+            if(data[5]!="TRUE\n")
+                newgrade=true;
             data[5]="TRUE\n";
+        }
         if(rightnum==0)
+        {
+            if(data[8]!="TRUE\n")
+                newgrade=true;
             data[8]="TRUE\n";
+        }
         writecsv("achievement.csv",data);
-        tip_ *tips=new tip_(rightnum);
+        tip_ *tips=new tip_(rightnum,newgrade);
         tips->show();
     });
     connect(&flash, &QTimer::timeout, this, &page3::handleflash);

@@ -40,13 +40,12 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         page3.h page3.cpp page3.ui
         widget.h widget.cpp widget.ui
         customdic.cpp customdic.h customdic.ui
-        widget_.h widget_.cpp widget_.ui
-
         page4.h page4.cpp page4.ui
         material.qrc
         tip_.h tip_.cpp tip_.ui
-        resource.qrc
         title.qrc
+        MapWidget.h MapWidget.cpp MapWidget.ui
+
 
     )
 # Define target properties for Android with Qt 6 as:

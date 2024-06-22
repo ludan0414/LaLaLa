@@ -1,0 +1,19 @@
+{
+	"BUILD_DIR" : "D:/qt/LaLaLa/projectdemo/build/Desktop_Qt_6_7_0_MinGW_64_bit-Release/projectdemo_autogen",
+	"CMAKE_BINARY_DIR" : "D:/qt/LaLaLa/projectdemo/build/Desktop_Qt_6_7_0_MinGW_64_bit-Release",
+	"CMAKE_CURRENT_BINARY_DIR" : "D:/qt/LaLaLa/projectdemo/build/Desktop_Qt_6_7_0_MinGW_64_bit-Release",
+	"CMAKE_CURRENT_SOURCE_DIR" : "D:/qt/LaLaLa/projectdemo",
+	"CMAKE_SOURCE_DIR" : "D:/qt/LaLaLa/projectdemo",
+	"INCLUDE_DIR" : "D:/qt/LaLaLa/projectdemo/build/Desktop_Qt_6_7_0_MinGW_64_bit-Release/projectdemo_autogen/include",
+	"INPUTS" : [ "D:/qt/LaLaLa/projectdemo/\u533a\u57df4.png" ],
+	"LOCK_FILE" : "D:/qt/LaLaLa/projectdemo/build/Desktop_Qt_6_7_0_MinGW_64_bit-Release/CMakeFiles/projectdemo_autogen.dir/AutoRcc_d_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--no-zstd", "-name", "d" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_d.cpp",
+	"RCC_EXECUTABLE" : "D:/QT-download/6.7.0/mingw_64/./bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "D:/qt/LaLaLa/projectdemo/build/Desktop_Qt_6_7_0_MinGW_64_bit-Release/CMakeFiles/projectdemo_autogen.dir/AutoRcc_d_EWIEGA46WW_Used.txt",
+	"SOURCE" : "D:/qt/LaLaLa/projectdemo/d.qrc",
+	"VERBOSITY" : 0
+}

@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-26d3af8f726d59a81e8b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "projectdemo",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "projectdemo::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-projectdemo-Release-93372141f5ae91559a6a.json",
+					"name" : "projectdemo",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "projectdemo_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-projectdemo_autogen-Release-de14d28e79a5fc0f124e.json",
+					"name" : "projectdemo_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "projectdemo_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-projectdemo_autogen_timestamp_deps-Release-0dfd95f68dde080aadff.json",
+					"name" : "projectdemo_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/qt/LaLaLa/projectdemo/build/Desktop_Qt_6_7_0_MinGW_64_bit-Release",
+		"source" : "D:/qt/LaLaLa/projectdemo"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

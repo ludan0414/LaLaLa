@@ -46,6 +46,7 @@ private:
     int num=0;
     int number;
     int myanswer[11];
+    bool newgrade;
     void writecsv(const QString& filename,  QStringList data);
     void readcsv(const QString& filename);
     void init();

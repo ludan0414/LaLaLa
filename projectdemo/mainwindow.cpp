@@ -1,8 +1,9 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include"page1.h"
+#include"MapWidget.h"
 #include "widget.h"
-#include "widget_.h"
+//#include "widget_.h"
 #include "makedic.hpp"
 #include<QVBoxLayout>
 MainWindow::MainWindow(QWidget *parent)
@@ -11,7 +12,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle("refuse classification");
-
     this->resize(400,600);
     QWidget *widget=new QWidget(this);
     this->setCentralWidget(widget);
@@ -60,7 +60,7 @@ MainWindow::MainWindow(QWidget *parent)
         w->show();
     });
     connect(button2,&QPushButton::clicked,this,[](){
-        widget_ *function2=new widget_;
+        MapWidget*function2=new MapWidget;
         function2->show();
     });
     connect(button3,&QPushButton::clicked,this,[](){

@@ -12,7 +12,7 @@ class tip_ : public QWidget
     Q_OBJECT
 
 public:
-    explicit tip_(int num,QWidget *parent = nullptr);
+    explicit tip_(int num,bool s,QWidget *parent = nullptr);
     ~tip_();
     QTextBrowser *text=new QTextBrowser(this);
 

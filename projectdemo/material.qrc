@@ -16,5 +16,17 @@
         <file>银章.png</file>
         <file>紫宝石.png</file>
         <file>钻石.png</file>
+        <file>搜索.png</file>
+        <file>2.jpg</file>
+        <file>4.jpg</file>
+        <file>广州塔.png</file>
+        <file>上海.png</file>
+        <file>天坛.png</file>
+        <file>笔记.png</file>
+        <file>可回收垃圾.png</file>
+        <file>厨余垃圾.png</file>
+        <file>其他垃圾.png</file>
+        <file>有害垃圾.png</file>
     </qresource>
+    <qresource prefix="/material4"/>
 </RCC>

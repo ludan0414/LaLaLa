@@ -15,11 +15,40 @@ customdic::customdic(QWidget *parent)
     , ui(new Ui::customdic)
 {
     ui->setupUi(this);
+    setWindowTitle("自定义垃圾列表");
     showlist(ui);
     ui->new_2->setEnabled(0);
     ui->change->setEnabled(0);
     ui->delete_2->setEnabled(0);
     ui->viewcustom->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->sort->setItemIcon(0,QIcon(":/material3/可回收垃圾.png"));
+    ui->sort->setItemIcon(1,QIcon(":/material3/有害垃圾.png"));
+    ui->sort->setItemIcon(2,QIcon(":/material3/厨余垃圾.png"));
+    ui->sort->setItemIcon(3,QIcon(":/material3/其他垃圾.png"));
+    QList<QPushButton *> allButtons = this->findChildren<QPushButton *>();
+    for (QPushButton *button : allButtons) {
+        button->setStyleSheet(
+            "QPushButton {"
+            "    border-style: outset;"
+            "    border-width: 2px;"
+            "    border-radius: 10px;"
+            "    border-color: #AFEEEE;"
+            "    font: bold 18px;"
+            "    min-width: 2em;"
+            "    color: black;" /* 字体颜色 */
+            "    padding: 4px;"
+            "    transition: transform 0.2s;"
+            "}"
+            "QPushButton:hover {"
+            "    background-color: rgb(135, 206, 235);"
+            "    border-width: 4px;"
+            "}"
+            "QPushButton:pressed {"
+            "    background-color: rgb(28,134,238);"
+            "    border-style: inset;"
+            "}"
+            );
+    }
 }
 customdic::~customdic()
 {
@@ -81,6 +110,10 @@ void customdic::on_new_2_clicked()
     ui->new_2->setEnabled(0);
     ui->change->setEnabled(0);
     ui->delete_2->setEnabled(0);
+    ui->sort->setItemIcon(0,QIcon(":/material3/可回收垃圾.png"));
+    ui->sort->setItemIcon(1,QIcon(":/material3/有害垃圾.png"));
+    ui->sort->setItemIcon(2,QIcon(":/material3/厨余垃圾.png"));
+    ui->sort->setItemIcon(3,QIcon(":/material3/其他垃圾.png"));
 }
 
 
@@ -109,6 +142,10 @@ void customdic::on_change_clicked()
     ui->new_2->setEnabled(0);
     ui->change->setEnabled(0);
     ui->delete_2->setEnabled(0);
+    ui->sort->setItemIcon(0,QIcon(":/material3/可回收垃圾.png"));
+    ui->sort->setItemIcon(1,QIcon(":/material3/有害垃圾.png"));
+    ui->sort->setItemIcon(2,QIcon(":/material3/厨余垃圾.png"));
+    ui->sort->setItemIcon(3,QIcon(":/material3/其他垃圾.png"));
 }
 
 
@@ -131,6 +168,10 @@ void customdic::on_delete_2_clicked()
     ui->new_2->setEnabled(0);
     ui->change->setEnabled(0);
     ui->delete_2->setEnabled(0);
+    ui->sort->setItemIcon(0,QIcon(":/material3/可回收垃圾.png"));
+    ui->sort->setItemIcon(1,QIcon(":/material3/有害垃圾.png"));
+    ui->sort->setItemIcon(2,QIcon(":/material3/厨余垃圾.png"));
+    ui->sort->setItemIcon(3,QIcon(":/material3/其他垃圾.png"));
 }
 
 

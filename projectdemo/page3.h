@@ -45,6 +45,7 @@ private:
     int wrongnum=0;
     int num=0;
     int number;
+    bool newgrade;
     QTimer *timer;
     QTime *TimeRecord;
     QLCDNumber *Time;

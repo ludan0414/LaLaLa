@@ -1,14 +1,16 @@
 <RCC>
-    <qresource prefix="/mainwindowtitle">
-        <file>title1.jpg</file>
-    </qresource>
+    <qresource prefix="/mainwindowtitle"/>
     <qresource prefix="/function1title">
         <file>title2.png</file>
+        <file>笔记 (1).png</file>
     </qresource>
     <qresource prefix="/function2title">
         <file>title3.png</file>
     </qresource>
     <qresource prefix="/function3title">
         <file>title4.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>环保健康.png</file>
     </qresource>
 </RCC>

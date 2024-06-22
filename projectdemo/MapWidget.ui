@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>widget2</class>
+ <widget class="QWidget" name="widget2">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>633</width>
+    <height>444</height>
+   </rect>
+  </property>
+  <property name="acceptDrops">
+   <bool>true</bool>
+  </property>
+  <property name="windowTitle">
+   <string>校园垃圾桶向导</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="title.qrc">
+    <normaloff>:/function2title/title3.png</normaloff>:/function2title/title3.png</iconset>
+  </property>
+  <property name="windowOpacity">
+   <double>2.000000000000000</double>
+  </property>
+ </widget>
+ <resources>
+  <include location="title.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="title.qrc">
-    <normaloff>:/mainwindowtitle/title1.jpg</normaloff>:/mainwindowtitle/title1.jpg</iconset>
+    <normaloff>:/环保健康.png</normaloff>:/环保健康.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget"/>
   <widget class="QMenuBar" name="menubar">
